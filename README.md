@@ -9,7 +9,7 @@
 - `app.js`: 명언 렌더링, 검색, 태그 필터, 복사 기능
 - `data/quotes.json`: 명언 데이터 파일
 - `scripts/validate_quotes.py`: 데이터 형식 검증 스크립트
-- `.github/workflows/deploy-pages.yml`: GitHub Pages 자동 배포
+- `.nojekyll`: GitHub Pages가 정적 파일을 그대로 배포하도록 지정
 
 ## 명언 추가/삭제 방법
 
@@ -37,8 +37,11 @@
 
 1. 이 저장소를 GitHub에 푸시합니다.
 2. GitHub 저장소의 `Settings > Pages` 로 이동합니다.
-3. Source를 `GitHub Actions`로 선택합니다.
-4. `main` 브랜치에 푸시하면 자동 배포됩니다.
+3. `Build and deployment`의 `Source`를 `Deploy from a branch`로 선택합니다.
+4. Branch를 `main`으로, 폴더를 `/(root)`로 선택한 뒤 저장합니다.
+5. 이후 `main` 브랜치에 푸시하면 자동 배포됩니다.
+
+이 프로젝트는 빌드 과정이 없는 순수 정적 사이트라서 `GitHub Actions`보다 브랜치 배포가 더 단순하고 문제도 적습니다.
 
 배포 주소는 일반적으로 아래 형식입니다.
 
