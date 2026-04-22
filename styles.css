@@ -5,9 +5,9 @@
   --ink: #181716;
   --muted: #5f5a56;
   --line: rgba(24, 23, 22, 0.12);
-  --accent: #bf5a36;
-  --accent-soft: #ead1a5;
-  --shadow: 0 20px 60px rgba(42, 26, 16, 0.12);
+  --accent: #b85a38;
+  --accent-soft: #e8d4af;
+  --shadow: 0 24px 80px rgba(42, 26, 16, 0.12);
   --radius-xl: 32px;
   --radius-lg: 24px;
   --radius-md: 18px;
@@ -30,7 +30,7 @@ body {
     radial-gradient(circle at top left, rgba(255, 204, 145, 0.45), transparent 35%),
     radial-gradient(circle at 80% 20%, rgba(199, 118, 79, 0.26), transparent 26%),
     linear-gradient(135deg, #f8f5ef 0%, #f3ebdf 48%, #eee0cd 100%);
-  font-family: "Space Grotesk", sans-serif;
+  font-family: "Instrument Sans", sans-serif;
 }
 
 body::before {
@@ -49,7 +49,7 @@ body::before {
   position: relative;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 32px 20px 72px;
+  padding: 28px 22px 88px;
 }
 
 .ambient {
@@ -87,10 +87,12 @@ body::before {
 .hero {
   position: relative;
   overflow: hidden;
-  padding: 28px;
+  padding: 34px;
   border: 1px solid var(--line);
-  border-radius: 36px;
-  background: linear-gradient(135deg, rgba(255, 251, 245, 0.92), rgba(255, 248, 240, 0.58));
+  border-radius: 40px;
+  background:
+    linear-gradient(135deg, rgba(255, 251, 245, 0.94), rgba(255, 248, 240, 0.62)),
+    rgba(255, 255, 255, 0.35);
   box-shadow: var(--shadow);
 }
 
@@ -123,23 +125,28 @@ body::before {
 }
 
 .hero-grid {
-  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
-  align-items: end;
+  grid-template-columns: minmax(0, 1.45fr) minmax(320px, 0.55fr);
+  align-items: start;
+  column-gap: 30px;
 }
 
 h1,
 h2,
 .hero-quote,
 .quote-text {
-  font-family: "Bodoni Moda", serif;
-  font-weight: 500;
+  font-family: "Noto Serif KR", serif;
+  font-weight: 600;
 }
 
 h1 {
-  margin: 12px 0 18px;
-  font-size: clamp(3.4rem, 11vw, 7rem);
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 0 18px;
+  font-size: clamp(3.3rem, 9vw, 6.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.075em;
+  text-wrap: balance;
 }
 
 .hero-copy,
@@ -148,27 +155,46 @@ h1 {
 .quote-meta,
 .hero-source {
   color: var(--muted);
-  line-height: 1.65;
+  line-height: 1.72;
+}
+
+.hero-copy-block {
+  max-width: 720px;
+}
+
+.headline-line {
+  display: block;
 }
 
 .hero-copy {
-  max-width: 44rem;
-  font-size: 1rem;
+  max-width: 40rem;
+  font-size: 1.02rem;
+  letter-spacing: -0.01em;
+}
+
+.hero-note {
+  margin: 24px 0 0;
+  color: rgba(24, 23, 22, 0.72);
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
 .hero-card {
-  padding: 24px;
+  padding: 28px;
   border: 1px solid rgba(24, 23, 22, 0.1);
   border-radius: var(--radius-xl);
   background: rgba(18, 17, 17, 0.94);
   color: #f9f5ef;
-  transform: translateY(12px);
+  transform: translateY(28px);
+  box-shadow: 0 22px 60px rgba(17, 13, 10, 0.2);
 }
 
 .hero-quote {
-  margin: 10px 0 20px;
-  font-size: clamp(1.5rem, 2.4vw, 2.3rem);
-  line-height: 1.22;
+  margin: 14px 0 22px;
+  font-size: clamp(1.55rem, 2.15vw, 2.3rem);
+  line-height: 1.38;
+  letter-spacing: -0.03em;
 }
 
 .hero-source {
@@ -179,16 +205,16 @@ h1 {
 .control-strip {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 12px;
-  margin: 22px 0 38px;
+  gap: 14px;
+  margin: 26px 0 44px;
   padding: 14px;
   border: 1px solid var(--line);
-  border-radius: 22px;
-  background: rgba(255, 251, 245, 0.58);
+  border-radius: 28px;
+  background: rgba(255, 251, 245, 0.62);
 }
 
 .metric,
-.outline-button {
+.action-panel {
   min-height: 84px;
   border-radius: 18px;
 }
@@ -201,9 +227,27 @@ h1 {
   background: rgba(255, 255, 255, 0.46);
 }
 
+.action-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.action-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.74rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
 .metric strong {
-  margin-top: 6px;
-  font-size: 1.7rem;
+  margin-top: 7px;
+  font-size: 1.9rem;
+  letter-spacing: -0.04em;
 }
 
 .outline-button,
@@ -218,10 +262,14 @@ h1 {
 }
 
 .outline-button {
+  width: 100%;
+  min-height: 100%;
+  padding: 0 18px;
   border: 1px solid rgba(24, 23, 22, 0.15);
   background: var(--ink);
   color: #fff8f0;
   font: inherit;
+  font-weight: 600;
 }
 
 .outline-button:hover,
@@ -234,23 +282,24 @@ h1 {
 .manage-panel {
   grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
   align-items: start;
-  margin-bottom: 30px;
+  margin-bottom: 34px;
 }
 
 .archive-intro h2,
 .manage-panel h2 {
-  margin: 8px 0 0;
-  font-size: clamp(1.9rem, 4vw, 3.4rem);
-  line-height: 1;
+  margin: 10px 0 0;
+  font-size: clamp(2rem, 4vw, 3.35rem);
+  line-height: 1.22;
+  letter-spacing: -0.05em;
 }
 
 .toolbar {
-  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
-  padding: 18px;
-  margin-bottom: 24px;
+  grid-template-columns: minmax(280px, 0.62fr) minmax(0, 1.38fr);
+  padding: 22px;
+  margin-bottom: 28px;
   border: 1px solid var(--line);
-  border-radius: 26px;
-  background: rgba(255, 251, 245, 0.56);
+  border-radius: 30px;
+  background: rgba(255, 251, 245, 0.6);
 }
 
 .search-field {
@@ -264,7 +313,7 @@ h1 {
 
 .search-field input {
   width: 100%;
-  padding: 16px 18px;
+  padding: 18px 20px;
   border: 1px solid rgba(24, 23, 22, 0.15);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.72);
@@ -284,12 +333,13 @@ h1 {
 }
 
 .tag-filter {
-  padding: 10px 14px;
+  padding: 11px 15px;
   border: 1px solid rgba(24, 23, 22, 0.12);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.56);
   color: var(--ink);
   font: inherit;
+  font-size: 0.95rem;
 }
 
 .tag-filter.is-active {
@@ -301,26 +351,30 @@ h1 {
 .quote-grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: 18px;
+  gap: 20px;
 }
 
 .quote-card {
   display: flex;
   grid-column: span 4;
   flex-direction: column;
-  min-height: 320px;
-  padding: 22px;
+  min-height: 352px;
+  padding: 24px;
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 30px;
   background:
-    linear-gradient(180deg, rgba(255, 251, 245, 0.9), rgba(255, 251, 245, 0.64)),
+    linear-gradient(180deg, rgba(255, 251, 245, 0.94), rgba(255, 251, 245, 0.66)),
     rgba(255, 255, 255, 0.42);
-  box-shadow: 0 18px 40px rgba(53, 37, 26, 0.07);
+  box-shadow: 0 22px 50px rgba(53, 37, 26, 0.075);
 }
 
-.quote-card:nth-child(5n + 1),
-.quote-card:nth-child(5n + 4) {
-  transform: translateY(18px);
+.quote-card:nth-child(6n + 1),
+.quote-card:nth-child(6n + 4) {
+  transform: translateY(20px);
+}
+
+.quote-card:nth-child(6n + 3) {
+  transform: translateY(52px);
 }
 
 .quote-card-top {
@@ -334,7 +388,7 @@ h1 {
   margin: 0;
   color: var(--muted);
   font-size: 0.86rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -347,31 +401,33 @@ h1 {
 }
 
 .quote-text {
-  margin: 24px 0 20px;
-  font-size: clamp(1.4rem, 2vw, 2rem);
-  line-height: 1.22;
+  margin: 28px 0 20px;
+  font-size: clamp(1.45rem, 1.9vw, 1.95rem);
+  line-height: 1.52;
+  letter-spacing: -0.035em;
 }
 
 .quote-meta {
   margin-top: auto;
+  font-size: 0.96rem;
 }
 
 .quote-tags {
-  margin-top: 18px;
+  margin-top: 20px;
 }
 
 .quote-tags span {
-  padding: 8px 12px;
+  padding: 8px 13px;
   border-radius: 999px;
   background: var(--accent-soft);
   font-size: 0.84rem;
 }
 
 .manage-panel {
-  margin-top: 44px;
-  padding: 24px;
+  margin-top: 60px;
+  padding: 28px;
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 32px;
   background: rgba(255, 251, 245, 0.62);
 }
 
@@ -401,8 +457,9 @@ h1 {
     grid-column: span 6;
   }
 
-  .quote-card:nth-child(5n + 1),
-  .quote-card:nth-child(5n + 4) {
+  .quote-card:nth-child(6n + 1),
+  .quote-card:nth-child(6n + 4),
+  .quote-card:nth-child(6n + 3) {
     transform: none;
   }
 }
@@ -413,12 +470,25 @@ h1 {
   }
 
   .hero {
-    padding: 20px;
+    padding: 22px 20px;
     border-radius: 28px;
   }
 
   .hero-card {
     transform: none;
+  }
+
+  h1 {
+    gap: 6px;
+    font-size: clamp(2.7rem, 14vw, 4rem);
+    line-height: 0.98;
+  }
+
+  .hero-copy,
+  .section-copy,
+  .quote-meta,
+  .manage-list {
+    line-height: 1.62;
   }
 
   .quote-grid {
