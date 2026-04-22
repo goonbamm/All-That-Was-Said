@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>괴테는 모든 것을 말했다</title>
+    <meta
+      name="description"
+      content="책 '괴테는 모든 것을 말했다'에서 고른 문장을 감각적인 아카이브로 정리한 웹사이트"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <div class="ambient ambient-one"></div>
+      <div class="ambient ambient-two"></div>
+
+      <header class="hero">
+        <p class="eyebrow">GOETHE QUOTE ARCHIVE</p>
+        <div class="hero-grid">
+          <div>
+            <h1>괴테는<br />모든 것을 말했다</h1>
+            <p class="hero-copy">
+              책 속 문장을 기록하고 다시 꺼내 보는 개인 아카이브. 강한 타이포와
+              에디토리얼 레이아웃으로 읽는 감도를 살린, GitHub Pages 기반의
+              정적 홈페이지입니다.
+            </p>
+          </div>
+
+          <aside class="hero-card">
+            <p class="card-label">Today&apos;s fragment</p>
+            <blockquote id="hero-quote" class="hero-quote"></blockquote>
+            <p id="hero-source" class="hero-source"></p>
+          </aside>
+        </div>
+      </header>
+
+      <main>
+        <section class="control-strip">
+          <div class="metric">
+            <span class="metric-label">Quotes</span>
+            <strong id="quote-count">0</strong>
+          </div>
+          <div class="metric">
+            <span class="metric-label">Tags</span>
+            <strong id="tag-count">0</strong>
+          </div>
+          <div class="metric">
+            <span class="metric-label">View</span>
+            <strong>Archive</strong>
+          </div>
+          <button id="random-button" class="outline-button" type="button">
+            랜덤 문장 보기
+          </button>
+        </section>
+
+        <section class="archive-intro">
+          <div>
+            <p class="section-kicker">ARCHIVE</p>
+            <h2>읽고, 찾고, 다시 저장하는 명언 인덱스</h2>
+          </div>
+          <p class="section-copy">
+            명언은 JSON 파일 하나로 관리됩니다. 문장을 추가하거나 삭제하면
+            홈페이지와 GitHub Pages 배포본에 바로 반영됩니다.
+          </p>
+        </section>
+
+        <section class="toolbar" aria-label="명언 검색 도구">
+          <label class="search-field">
+            <span>검색</span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="문장, 출처, 태그로 찾기"
+            />
+          </label>
+
+          <div>
+            <span class="toolbar-label">태그</span>
+            <div id="tag-filters" class="tag-filters"></div>
+          </div>
+        </section>
+
+        <section id="quote-grid" class="quote-grid" aria-live="polite"></section>
+
+        <template id="quote-card-template">
+          <article class="quote-card">
+            <div class="quote-card-top">
+              <p class="quote-index"></p>
+              <button class="copy-button" type="button">복사</button>
+            </div>
+            <blockquote class="quote-text"></blockquote>
+            <p class="quote-meta"></p>
+            <div class="quote-tags"></div>
+          </article>
+        </template>
+
+        <section class="manage-panel">
+          <div>
+            <p class="section-kicker">MANAGE</p>
+            <h2>명언 추가와 삭제는 데이터 파일만 수정하면 됩니다</h2>
+          </div>
+          <ol class="manage-list">
+            <li><code>data/quotes.json</code>에 객체를 추가하거나 지웁니다.</li>
+            <li><code>id</code>, <code>text</code>, <code>source</code>만 유지하면 됩니다.</li>
+            <li>커밋 후 GitHub Pages가 자동으로 다시 배포합니다.</li>
+          </ol>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
