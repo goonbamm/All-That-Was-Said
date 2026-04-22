@@ -5,6 +5,7 @@ const tagFilters = document.querySelector("#tag-filters");
 const quoteCount = document.querySelector("#quote-count");
 const tagCount = document.querySelector("#tag-count");
 const heroQuote = document.querySelector("#hero-quote");
+const heroOriginal = document.querySelector("#hero-original");
 const heroSource = document.querySelector("#hero-source");
 const randomButton = document.querySelector("#random-button");
 
@@ -43,7 +44,7 @@ function filterQuotes() {
       state.activeTag === "all" || quote.tags.includes(state.activeTag);
 
     const haystack = normalizeText(
-      [quote.text, quote.source, quote.section || "", quote.tags.join(" ")].join(" ")
+      [quote.text, quote.original || "", quote.source, quote.section || "", quote.tags.join(" ")].join(" ")
     );
     const matchesSearch = search === "" || haystack.includes(search);
 
@@ -54,11 +55,13 @@ function filterQuotes() {
 function renderHero(quote) {
   if (!quote) {
     heroQuote.textContent = "명언을 추가하면 이 자리에서 오늘의 문장을 보여줍니다.";
+    heroOriginal.textContent = "Original text appears here.";
     heroSource.textContent = "data/quotes.json";
     return;
   }
 
   heroQuote.textContent = quote.text;
+  heroOriginal.textContent = quote.original || "";
   heroSource.textContent = buildMeta(quote);
 }
 
@@ -95,7 +98,9 @@ function renderTagFilters(quotes) {
 }
 
 async function copyQuote(quote) {
-  const payload = `${quote.text}\n- ${buildMeta(quote)}`;
+  const payload = [quote.text, quote.original || "", `- ${buildMeta(quote)}`]
+    .filter(Boolean)
+    .join("\n");
 
   try {
     await navigator.clipboard.writeText(payload);
@@ -121,12 +126,14 @@ function renderQuotes(quotes) {
     const article = fragment.querySelector(".quote-card");
     const quoteIndex = fragment.querySelector(".quote-index");
     const quoteText = fragment.querySelector(".quote-text");
+    const quoteOriginal = fragment.querySelector(".quote-original");
     const quoteMeta = fragment.querySelector(".quote-meta");
     const copyButton = fragment.querySelector(".copy-button");
     const quoteTags = fragment.querySelector(".quote-tags");
 
     quoteIndex.textContent = `${String(index + 1).padStart(2, "0")} / ${quote.id}`;
     quoteText.textContent = quote.text;
+    quoteOriginal.textContent = quote.original || "";
     quoteMeta.textContent = buildMeta(quote);
 
     copyButton.addEventListener("click", async () => {

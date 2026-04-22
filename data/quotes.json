@@ -1,44 +1,66 @@
 [
   {
-    "id": "g001",
-    "text": "여기에 첫 번째로 저장하고 싶은 문장을 넣어 주세요.",
-    "source": "괴테는 모든 것을 말했다",
-    "section": "직접 입력",
-    "tags": ["샘플", "시작"]
+    "id": "n001",
+    "text": "춤추는 별을 낳으려면, 자기 안에 아직 혼돈을 지니고 있어야 한다.",
+    "original": "One must still have chaos in one, to give birth to a dancing star.",
+    "source": "Thus Spake Zarathustra",
+    "section": "Zarathustra's Prologue, 5",
+    "tags": ["혼돈", "창조", "자기극복"]
   },
   {
-    "id": "g002",
-    "text": "문장은 짧아도 좋고 길어도 좋습니다. 마음에 남은 문장을 그대로 기록하면 됩니다.",
-    "source": "괴테는 모든 것을 말했다",
-    "section": "직접 입력",
-    "tags": ["샘플", "문장"]
+    "id": "n002",
+    "text": "사랑에는 언제나 얼마간의 광기가 있다. 그러나 그 광기 속에도 언제나 어떤 이성이 있다.",
+    "original": "There is always some madness in love. But there is always, also, some method in madness.",
+    "source": "Thus Spake Zarathustra",
+    "section": "On Reading and Writing",
+    "tags": ["사랑", "광기", "통찰"]
   },
   {
-    "id": "g003",
-    "text": "태그는 검색과 분류를 위해 사용합니다. 예를 들어 사랑, 태도, 고독처럼 넣을 수 있습니다.",
-    "source": "괴테는 모든 것을 말했다",
-    "section": "태그 예시",
-    "tags": ["샘플", "태그", "관리"]
+    "id": "n003",
+    "text": "나는 춤출 줄 아는 신이 아니라면 믿지 않겠다.",
+    "original": "I should only believe in a God that would know how to dance.",
+    "source": "Thus Spake Zarathustra",
+    "section": "On Reading and Writing",
+    "tags": ["춤", "신", "가벼움"]
   },
   {
-    "id": "g004",
-    "text": "삭제하고 싶은 항목은 이 객체 전체를 지우면 됩니다.",
-    "source": "괴테는 모든 것을 말했다",
-    "section": "삭제 예시",
-    "tags": ["샘플", "삭제"]
+    "id": "n004",
+    "text": "네가 누구인지, 그것이 되어라.",
+    "original": "What does thy conscience say?—'Thou shalt become what thou art.'",
+    "source": "The Joyful Wisdom",
+    "section": "Book Four, Aphorism 270",
+    "tags": ["자아", "양심", "성장"]
   },
   {
-    "id": "g005",
-    "text": "section 값에는 장 제목이나 주제를 넣어도 되고, 비워두지 않는 정도만 유지하면 됩니다.",
-    "source": "괴테는 모든 것을 말했다",
-    "section": "섹션 예시",
-    "tags": ["샘플", "구조"]
+    "id": "n005",
+    "text": "삶에서 가장 큰 생산성과 가장 큰 기쁨을 얻는 비밀은 위험 속에서 사는 데 있다.",
+    "original": "The secret of realising the largest productivity and the greatest enjoyment of existence is to live in danger!",
+    "source": "The Joyful Wisdom",
+    "section": "Book Four, Aphorism 283",
+    "tags": ["위험", "삶", "행동"]
   },
   {
-    "id": "g006",
-    "text": "실제 운영 시에는 이 샘플들을 지우고 직접 고른 문장만 남기면 됩니다.",
-    "source": "괴테는 모든 것을 말했다",
-    "section": "운영 안내",
-    "tags": ["샘플", "운영"]
+    "id": "n006",
+    "text": "괴물과 싸우는 사람은 그 과정에서 스스로 괴물이 되지 않도록 조심해야 한다. 그리고 네가 오랫동안 심연을 들여다보면, 심연 또한 너를 들여다본다.",
+    "original": "He who fights with monsters should be careful lest he thereby become a monster. And if thou gaze long into an abyss, the abyss will also gaze into thee.",
+    "source": "Beyond Good and Evil",
+    "section": "Chapter IV, Aphorism 146",
+    "tags": ["심연", "경계", "자기보존"]
+  },
+  {
+    "id": "n007",
+    "text": "사랑에서 비롯된 행위는 언제나 선과 악의 저편에서 일어난다.",
+    "original": "What is done out of love always takes place beyond good and evil.",
+    "source": "Beyond Good and Evil",
+    "section": "Chapter IV, Aphorism 153",
+    "tags": ["사랑", "도덕", "선악"]
+  },
+  {
+    "id": "n008",
+    "text": "개인에게서 광기는 드문 일이다. 그러나 집단과 정당, 민족과 시대에서는 그것이 규칙이다.",
+    "original": "Insanity in individuals is something rare—but in groups, parties, nations, and epochs it is the rule.",
+    "source": "Beyond Good and Evil",
+    "section": "Chapter IV, Aphorism 156",
+    "tags": ["집단", "시대", "광기"]
   }
 ]

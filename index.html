@@ -3,15 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>괴테는 모든 것을 말했다</title>
+    <title>Nietzsche Quote Archive</title>
     <meta
       name="description"
-      content="책 '괴테는 모든 것을 말했다'에서 고른 문장을 감각적인 아카이브로 정리한 웹사이트"
+      content="니체의 문장을 공용 영역 번역본 기준으로 선별해 감각적인 아카이브로 정리한 웹사이트"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
@@ -20,28 +20,33 @@
     <div class="page-shell">
       <div class="ambient ambient-one"></div>
       <div class="ambient ambient-two"></div>
+      <div class="ambient ambient-three"></div>
 
       <header class="hero">
-        <p class="eyebrow">GOETHE QUOTE ARCHIVE</p>
+        <div class="hero-topline">
+          <p class="eyebrow">FRIEDRICH NIETZSCHE</p>
+          <p class="hero-edition">Archive Edition 01</p>
+        </div>
         <div class="hero-grid">
           <div class="hero-copy-block">
             <h1>
-              <span class="headline-line">괴테는</span>
-              <span class="headline-line">모든 것을 말했다</span>
+              <span class="headline-line">니체의 문장들</span>
+              <span class="headline-line">위험하게, 선명하게</span>
             </h1>
             <p class="hero-copy">
-              책 속 문장을 기록하고 다시 꺼내 보는 개인 아카이브. 강한 타이포와
-              에디토리얼 레이아웃으로 읽는 감도를 살린, GitHub Pages 기반의
-              정적 홈페이지입니다.
+              니체의 문장을 한국어 번역과 원문으로 함께 읽는 정적 아카이브.
+              따뜻한 종이 질감, 깊은 대비, 비대칭 카드 리듬으로 철학 문장을
+              패션 매거진처럼 보이게 정리했습니다.
             </p>
             <p class="hero-note">
-              Literary fragments, carefully indexed for rereading.
+              Public-domain source text, translated and arranged for rereading.
             </p>
           </div>
 
           <aside class="hero-card">
-            <p class="card-label">Today&apos;s fragment</p>
+            <p class="card-label">Featured fragment</p>
             <blockquote id="hero-quote" class="hero-quote"></blockquote>
+            <p id="hero-original" class="hero-original"></p>
             <p id="hero-source" class="hero-source"></p>
           </aside>
         </div>
@@ -59,7 +64,7 @@
           </div>
           <div class="metric">
             <span class="metric-label">View</span>
-            <strong>Archive</strong>
+            <strong>Bilingual</strong>
           </div>
           <div class="action-panel">
             <p class="action-label">Curated action</p>
@@ -72,11 +77,12 @@
         <section class="archive-intro">
           <div>
             <p class="section-kicker">ARCHIVE</p>
-            <h2>읽고, 찾고, 다시 저장하는 명언 인덱스</h2>
+            <h2>원문과 번역을 겹쳐 읽는 니체 명언 인덱스</h2>
           </div>
           <p class="section-copy">
-            명언은 JSON 파일 하나로 관리됩니다. 문장을 추가하거나 삭제하면
-            홈페이지와 GitHub Pages 배포본에 바로 반영됩니다.
+            문장은 공용 영역 영어 번역본 기준으로 선별했고, 사이트에는 한국어
+            번역과 원문을 함께 실었습니다. 검색과 태그 필터로 주제별 문장을
+            빠르게 다시 찾을 수 있습니다.
           </p>
         </section>
 
@@ -86,7 +92,7 @@
             <input
               id="search-input"
               type="search"
-              placeholder="문장, 출처, 태그로 찾기"
+              placeholder="번역, 원문, 출처, 태그로 찾기"
             />
           </label>
 
@@ -105,6 +111,7 @@
               <button class="copy-button" type="button">복사</button>
             </div>
             <blockquote class="quote-text"></blockquote>
+            <p class="quote-original"></p>
             <p class="quote-meta"></p>
             <div class="quote-tags"></div>
           </article>
@@ -113,12 +120,12 @@
         <section class="manage-panel">
           <div>
             <p class="section-kicker">MANAGE</p>
-            <h2>명언 추가와 삭제는 데이터 파일만 수정하면 됩니다</h2>
+            <h2>문장 데이터는 그대로 편집 가능한 JSON 파일로 관리됩니다</h2>
           </div>
           <ol class="manage-list">
             <li><code>data/quotes.json</code>에 객체를 추가하거나 지웁니다.</li>
-            <li><code>id</code>, <code>text</code>, <code>source</code>만 유지하면 됩니다.</li>
-            <li>커밋 후 GitHub Pages가 자동으로 다시 배포합니다.</li>
+            <li><code>text</code>는 한국어 번역, <code>original</code>은 원문으로 넣으면 됩니다.</li>
+            <li><code>source</code>, <code>section</code>, <code>tags</code>를 붙이면 바로 반영됩니다.</li>
           </ol>
         </section>
       </main>
