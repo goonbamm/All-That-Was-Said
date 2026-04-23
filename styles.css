@@ -9,6 +9,7 @@
   --accent-soft: #ecd4ab;
   --accent-deep: #2d1f18;
   --shadow: 0 28px 90px rgba(53, 33, 20, 0.14);
+  --shadow-deep: 0 38px 100px rgba(26, 18, 13, 0.24);
   --radius-xl: 38px;
   --radius-lg: 28px;
   --radius-md: 20px;
@@ -215,17 +216,24 @@ h1 {
 }
 
 .hero-card {
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
+  --pointer-x: 50%;
+  --pointer-y: 50%;
   position: relative;
   z-index: 1;
   padding: 30px 30px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 34px;
   background:
-    linear-gradient(180deg, rgba(25, 20, 18, 0.98), rgba(39, 29, 24, 0.94)),
-    rgba(18, 17, 17, 0.92);
-  color: #fbf6ef;
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 255, 255, 0.4), transparent 48%),
+    linear-gradient(165deg, rgba(255, 255, 255, 0.5), rgba(255, 249, 239, 0.2)),
+    rgba(255, 251, 246, 0.3);
+  color: #1e1612;
   transform: translateY(24px);
-  box-shadow: 0 28px 75px rgba(20, 14, 10, 0.24);
+  transform-style: preserve-3d;
+  box-shadow: var(--shadow-deep);
+  backdrop-filter: blur(24px) saturate(132%);
 }
 
 .hero-quote {
@@ -238,7 +246,7 @@ h1 {
 
 .hero-original {
   margin: 0 0 18px;
-  color: rgba(251, 246, 239, 0.78);
+  color: rgba(30, 22, 18, 0.7);
   font-family: "Cormorant Garamond", serif;
   font-size: 1.12rem;
   line-height: 1.42;
@@ -246,7 +254,27 @@ h1 {
 
 .hero-source {
   margin: 0;
-  color: rgba(251, 246, 239, 0.68);
+  color: rgba(30, 22, 18, 0.6);
+}
+
+.hero-card[data-depth-card] {
+  transform: translateY(24px) perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.hero-card[data-depth-card]:hover {
+  box-shadow: 0 50px 110px rgba(26, 18, 13, 0.3);
+}
+
+.hero-card::after {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.38);
+  pointer-events: none;
+  content: "";
 }
 
 .control-strip {
@@ -559,6 +587,15 @@ h1 {
     linear-gradient(180deg, rgba(255, 252, 247, 0.94), rgba(255, 247, 237, 0.72)),
     rgba(255, 255, 255, 0.46);
   box-shadow: 0 22px 55px rgba(53, 37, 26, 0.08);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.quote-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 28px 60px rgba(53, 37, 26, 0.16);
 }
 
 .quote-card.is-active {
@@ -638,7 +675,8 @@ h1 {
     grid-template-columns: 1fr;
   }
 
-  .hero-card {
+  .hero-card,
+  .hero-card[data-depth-card] {
     transform: none;
   }
 
@@ -711,7 +749,9 @@ h1 {
   .outline-button,
   .copy-button,
   .tag-filter,
-  .constellation-node {
+  .constellation-node,
+  .quote-card,
+  .hero-card[data-depth-card] {
     transition: none;
   }
 
@@ -729,7 +769,9 @@ h1 {
   .copy-button:hover,
   .tag-filter:hover,
   .constellation-node:hover,
-  .constellation-node.is-active {
+  .constellation-node.is-active,
+  .quote-card:hover,
+  .hero-card[data-depth-card] {
     transform: none;
   }
 }
