@@ -291,7 +291,9 @@ h1 {
 
 .outline-button,
 .copy-button,
-.tag-filter {
+.tag-filter,
+.view-button,
+.constellation-node {
   transition:
     transform 180ms ease,
     background-color 180ms ease,
@@ -315,9 +317,42 @@ h1 {
 
 .outline-button:hover,
 .copy-button:hover,
-.tag-filter:hover {
+.tag-filter:hover,
+.view-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(23, 20, 16, 0.11);
+}
+
+.metric-view {
+  gap: 12px;
+}
+
+.view-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.view-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  min-height: 42px;
+  border: 1px solid rgba(23, 20, 16, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.view-button.is-active {
+  border-color: transparent;
+  background: linear-gradient(135deg, #181411, #2a1d17);
+  color: #fff7ef;
 }
 
 .archive-intro {
@@ -400,6 +435,86 @@ h1 {
   align-items: stretch;
 }
 
+.quote-canvas {
+  position: relative;
+  min-height: 520px;
+  margin-top: 8px;
+  border: 1px solid var(--line);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(246, 223, 183, 0.45), transparent 35%),
+    radial-gradient(circle at 86% 74%, rgba(183, 92, 52, 0.16), transparent 38%),
+    rgba(255, 251, 244, 0.56);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.quote-canvas[hidden] {
+  display: none;
+}
+
+.quote-canvas::before {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(255, 250, 242, 0.65) 1px, transparent 1px),
+    linear-gradient(115deg, rgba(40, 28, 20, 0.16), transparent 26%, rgba(40, 28, 20, 0.16) 56%, transparent);
+  background-size: 72px 72px, 100% 100%;
+  opacity: 0.58;
+  content: "";
+}
+
+.constellation-lines {
+  position: absolute;
+  inset: 14% 6% 14%;
+  border-radius: 999px;
+  border-top: 1px solid rgba(23, 20, 16, 0.1);
+  border-bottom: 1px solid rgba(23, 20, 16, 0.08);
+  opacity: 0.82;
+  pointer-events: none;
+}
+
+.constellation-node {
+  position: absolute;
+  z-index: 1;
+  width: 18px;
+  height: 18px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(67, 49, 39, 0.8);
+  box-shadow:
+    0 0 0 4px rgba(255, 247, 236, 0.32),
+    0 0 16px rgba(247, 224, 188, 0.66);
+}
+
+.constellation-node[data-mood="fierce"] {
+  background: rgba(126, 66, 46, 0.88);
+}
+
+.constellation-node[data-mood="hopeful"] {
+  background: rgba(102, 82, 52, 0.84);
+}
+
+.constellation-node[data-mood="calm"] {
+  background: rgba(78, 66, 54, 0.82);
+}
+
+.constellation-node:hover {
+  transform: scale(1.45);
+}
+
+.constellation-node:focus-visible {
+  outline: 2px solid rgba(182, 91, 54, 0.52);
+  outline-offset: 3px;
+}
+
+.constellation-node.is-active {
+  transform: scale(1.65);
+  box-shadow:
+    0 0 0 5px rgba(255, 247, 236, 0.74),
+    0 0 22px rgba(182, 91, 54, 0.65);
+}
+
 .quote-card {
   display: flex;
   flex-direction: column;
@@ -411,6 +526,11 @@ h1 {
     linear-gradient(180deg, rgba(255, 252, 247, 0.94), rgba(255, 247, 237, 0.72)),
     rgba(255, 255, 255, 0.46);
   box-shadow: 0 22px 55px rgba(53, 37, 26, 0.08);
+}
+
+.quote-card.is-active {
+  border-color: rgba(182, 91, 54, 0.52);
+  box-shadow: 0 24px 52px rgba(53, 37, 26, 0.14);
 }
 
 .quote-card-top {
@@ -492,6 +612,10 @@ h1 {
   .quote-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .quote-canvas {
+    min-height: 460px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -530,5 +654,45 @@ h1 {
 
   .control-strip {
     padding: 10px;
+  }
+
+  .quote-canvas {
+    min-height: 330px;
+    border-radius: 24px;
+  }
+
+  .constellation-lines {
+    inset: 22% 8%;
+  }
+
+  .constellation-node {
+    width: 13px;
+    height: 13px;
+    box-shadow:
+      0 0 0 3px rgba(255, 247, 236, 0.24),
+      0 0 8px rgba(247, 224, 188, 0.5);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .outline-button,
+  .copy-button,
+  .tag-filter,
+  .view-button,
+  .constellation-node {
+    transition: none;
+  }
+
+  .outline-button:hover,
+  .copy-button:hover,
+  .tag-filter:hover,
+  .view-button:hover,
+  .constellation-node:hover,
+  .constellation-node.is-active {
+    transform: none;
   }
 }
