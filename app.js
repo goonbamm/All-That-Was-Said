@@ -9,6 +9,7 @@ const heroQuote = document.querySelector("#hero-quote");
 const heroOriginal = document.querySelector("#hero-original");
 const heroSource = document.querySelector("#hero-source");
 const randomButton = document.querySelector("#random-button");
+const focusCard = document.querySelector("#focus-card");
 
 const state = {
   quotes: [],
@@ -331,6 +332,28 @@ function bindEvents() {
     const randomQuote = visibleQuotes[randomIndex];
     setActiveQuote(randomQuote, { scrollToCard: true });
   });
+
+  if (focusCard) {
+    focusCard.addEventListener("pointermove", (event) => {
+      const rect = focusCard.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      const tiltY = (x - 0.5) * 8;
+      const tiltX = (0.5 - y) * 7;
+
+      focusCard.style.setProperty("--tilt-y", `${tiltY.toFixed(2)}deg`);
+      focusCard.style.setProperty("--tilt-x", `${tiltX.toFixed(2)}deg`);
+      focusCard.style.setProperty("--pointer-x", `${(x * 100).toFixed(2)}%`);
+      focusCard.style.setProperty("--pointer-y", `${(y * 100).toFixed(2)}%`);
+    });
+
+    focusCard.addEventListener("pointerleave", () => {
+      focusCard.style.setProperty("--tilt-y", "0deg");
+      focusCard.style.setProperty("--tilt-x", "0deg");
+      focusCard.style.setProperty("--pointer-x", "50%");
+      focusCard.style.setProperty("--pointer-y", "50%");
+    });
+  }
 }
 
 async function loadQuotes() {
