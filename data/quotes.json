@@ -5,7 +5,12 @@
     "original": "One must still have chaos in one, to give birth to a dancing star.",
     "source": "Thus Spake Zarathustra",
     "section": "Zarathustra's Prologue, 5",
-    "tags": ["혼돈", "창조", "자기극복"]
+    "tags": [
+      "혼돈",
+      "창조",
+      "자기극복"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n002",
@@ -13,7 +18,12 @@
     "original": "There is always some madness in love. But there is always, also, some method in madness.",
     "source": "Thus Spake Zarathustra",
     "section": "On Reading and Writing",
-    "tags": ["사랑", "광기", "통찰"]
+    "tags": [
+      "사랑",
+      "광기",
+      "통찰"
+    ],
+    "mood": "fierce"
   },
   {
     "id": "n003",
@@ -21,7 +31,12 @@
     "original": "I should only believe in a God that would know how to dance.",
     "source": "Thus Spake Zarathustra",
     "section": "On Reading and Writing",
-    "tags": ["춤", "신", "가벼움"]
+    "tags": [
+      "춤",
+      "신",
+      "가벼움"
+    ],
+    "mood": "hopeful"
   },
   {
     "id": "n004",
@@ -29,7 +44,12 @@
     "original": "What does thy conscience say?—'Thou shalt become what thou art.'",
     "source": "The Joyful Wisdom",
     "section": "Book Four, Aphorism 270",
-    "tags": ["자아", "양심", "성장"]
+    "tags": [
+      "자아",
+      "양심",
+      "성장"
+    ],
+    "mood": "reflective"
   },
   {
     "id": "n005",
@@ -37,7 +57,12 @@
     "original": "The secret of realising the largest productivity and the greatest enjoyment of existence is to live in danger!",
     "source": "The Joyful Wisdom",
     "section": "Book Four, Aphorism 283",
-    "tags": ["위험", "삶", "행동"]
+    "tags": [
+      "위험",
+      "삶",
+      "행동"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n006",
@@ -45,7 +70,12 @@
     "original": "He who fights with monsters should be careful lest he thereby become a monster. And if thou gaze long into an abyss, the abyss will also gaze into thee.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 146",
-    "tags": ["심연", "경계", "자기보존"]
+    "tags": [
+      "심연",
+      "경계",
+      "자기보존"
+    ],
+    "mood": "fierce"
   },
   {
     "id": "n007",
@@ -53,7 +83,12 @@
     "original": "What is done out of love always takes place beyond good and evil.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 153",
-    "tags": ["사랑", "도덕", "선악"]
+    "tags": [
+      "사랑",
+      "도덕",
+      "선악"
+    ],
+    "mood": "hopeful"
   },
   {
     "id": "n008",
@@ -61,7 +96,12 @@
     "original": "Insanity in individuals is something rare—but in groups, parties, nations, and epochs it is the rule.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 156",
-    "tags": ["집단", "시대", "광기"]
+    "tags": [
+      "집단",
+      "시대",
+      "광기"
+    ],
+    "mood": "reflective"
   },
   {
     "id": "n009",
@@ -69,7 +109,12 @@
     "original": "He who is thouroughly a teacher takes all things seriously only in relation to his pupils—even himself.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 63",
-    "tags": ["교사", "배움", "시선"]
+    "tags": [
+      "교사",
+      "배움",
+      "시선"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n010",
@@ -77,7 +122,12 @@
     "original": "The charm of knowledge would be small, were it not so much shame has to be overcome on the way to it.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 65",
-    "tags": ["지식", "수치", "배움"]
+    "tags": [
+      "지식",
+      "수치",
+      "배움"
+    ],
+    "mood": "fierce"
   },
   {
     "id": "n011",
@@ -85,7 +135,12 @@
     "original": "\"I did that,\" says my memory. \"I could not have done that,\" says my pride, and remains inexorable. Eventually—the memory yields.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 68",
-    "tags": ["기억", "자존심", "심리"]
+    "tags": [
+      "기억",
+      "자존심",
+      "심리"
+    ],
+    "mood": "hopeful"
   },
   {
     "id": "n012",
@@ -93,7 +148,12 @@
     "original": "So long as thou feelest the stars as an \"above thee,\" thou lackest the eye of the discerning one.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 71",
-    "tags": ["별", "통찰", "관점"]
+    "tags": [
+      "별",
+      "통찰",
+      "관점"
+    ],
+    "mood": "reflective"
   },
   {
     "id": "n013",
@@ -101,7 +161,12 @@
     "original": "It is not the strength, but the duration of great sentiments that makes those high among mankind.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 72",
-    "tags": ["감정", "지속", "인간"]
+    "tags": [
+      "감정",
+      "지속",
+      "인간"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n014",
@@ -109,7 +174,12 @@
     "original": "He who attains his ideal, precisely thereby surpasses it.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 73",
-    "tags": ["이상", "초월", "성장"]
+    "tags": [
+      "이상",
+      "초월",
+      "성장"
+    ],
+    "mood": "fierce"
   },
   {
     "id": "n015",
@@ -117,7 +187,12 @@
     "original": "Under peaceful conditions the militant man attacks himself.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 76",
-    "tags": ["평화", "투쟁", "내면"]
+    "tags": [
+      "평화",
+      "투쟁",
+      "내면"
+    ],
+    "mood": "hopeful"
   },
   {
     "id": "n016",
@@ -125,7 +200,12 @@
     "original": "He who despises himself, does still esteem himself as a despiser.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 78",
-    "tags": ["자기인식", "경멸", "자아"]
+    "tags": [
+      "자기인식",
+      "경멸",
+      "자아"
+    ],
+    "mood": "reflective"
   },
   {
     "id": "n017",
@@ -133,7 +213,12 @@
     "original": "It is terrible to die of thirst at sea. Is it necessary that you should so salt your truth that it will no longer—quench the thirst?",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 81",
-    "tags": ["진실", "갈증", "표현"]
+    "tags": [
+      "진실",
+      "갈증",
+      "표현"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n018",
@@ -141,7 +226,12 @@
     "original": "One begins to distrust very clever persons when they become embarrassed.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 88",
-    "tags": ["영리함", "의심", "인간관찰"]
+    "tags": [
+      "영리함",
+      "의심",
+      "인간관찰"
+    ],
+    "mood": "fierce"
   },
   {
     "id": "n019",
@@ -149,7 +239,12 @@
     "original": "Dreadful experiences raise the question whether he who experiences them is not something dreadful also.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 89",
-    "tags": ["경험", "공포", "자기반성"]
+    "tags": [
+      "경험",
+      "공포",
+      "자기반성"
+    ],
+    "mood": "hopeful"
   },
   {
     "id": "n020",
@@ -157,7 +252,12 @@
     "original": "The maturity of man—that means, to have reacquired the seriousness that one had as a child at play.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 94",
-    "tags": ["성숙", "놀이", "진지함"]
+    "tags": [
+      "성숙",
+      "놀이",
+      "진지함"
+    ],
+    "mood": "reflective"
   },
   {
     "id": "n021",
@@ -165,7 +265,12 @@
     "original": "One should part from life as Ulysses parted from Nausicaa—blessing it more than in love with it.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 96",
-    "tags": ["삶", "이별", "태도"]
+    "tags": [
+      "삶",
+      "이별",
+      "태도"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n022",
@@ -173,7 +278,12 @@
     "original": "We all feign to ourselves that we are simpler than we are: we thereby relax ourselves away from our fellows.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 100",
-    "tags": ["가면", "자기이해", "타인"]
+    "tags": [
+      "가면",
+      "자기이해",
+      "타인"
+    ],
+    "mood": "fierce"
   },
   {
     "id": "n023",
@@ -181,7 +291,12 @@
     "original": "THE DANGER IN HAPPINESS.—\"Everything now turns out best for me, I now love every fate:—who would like to be my fate?\"",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 103",
-    "tags": ["행복", "운명", "위험"]
+    "tags": [
+      "행복",
+      "운명",
+      "위험"
+    ],
+    "mood": "hopeful"
   },
   {
     "id": "n024",
@@ -189,7 +304,12 @@
     "original": "By means of music the very passions enjoy themselves.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 106",
-    "tags": ["음악", "정념", "감정"]
+    "tags": [
+      "음악",
+      "정념",
+      "감정"
+    ],
+    "mood": "reflective"
   },
   {
     "id": "n025",
@@ -197,7 +317,12 @@
     "original": "A sign of strong character, when once the resolution has been taken, to shut the ear even to the best counter-arguments. Occasionally, therefore, a will to stupidity.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 107",
-    "tags": ["성격", "결심", "의지"]
+    "tags": [
+      "성격",
+      "결심",
+      "의지"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n026",
@@ -205,7 +330,12 @@
     "original": "There is no such thing as moral phenomena, but only a moral interpretation of phenomena.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 108",
-    "tags": ["도덕", "해석", "현상"]
+    "tags": [
+      "도덕",
+      "해석",
+      "현상"
+    ],
+    "mood": "fierce"
   },
   {
     "id": "n027",
@@ -213,7 +343,12 @@
     "original": "The great epochs of our life are at the points when we gain courage to rebaptize our badness as the best in us.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 116",
-    "tags": ["용기", "해석", "변형"]
+    "tags": [
+      "용기",
+      "해석",
+      "변형"
+    ],
+    "mood": "hopeful"
   },
   {
     "id": "n028",
@@ -221,7 +356,12 @@
     "original": "There is an innocence of admiration: it is possessed by him to whom it has not yet occurred that he himself may be admired some day.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 118",
-    "tags": ["감탄", "순진함", "자기인식"]
+    "tags": [
+      "감탄",
+      "순진함",
+      "자기인식"
+    ],
+    "mood": "reflective"
   },
   {
     "id": "n029",
@@ -229,7 +369,12 @@
     "original": "To rejoice on account of praise is in many cases merely politeness of heart—and the very opposite of vanity of spirit.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 122",
-    "tags": ["찬사", "허영", "예의"]
+    "tags": [
+      "찬사",
+      "허영",
+      "예의"
+    ],
+    "mood": "calm"
   },
   {
     "id": "n030",
@@ -237,6 +382,11 @@
     "original": "When we have to change an opinion about any one, we charge heavily to his account the inconvenience he thereby causes us.",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 125",
-    "tags": ["판단", "의견", "심리"]
+    "tags": [
+      "판단",
+      "의견",
+      "심리"
+    ],
+    "mood": "fierce"
   }
 ]

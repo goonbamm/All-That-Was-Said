@@ -62,9 +62,16 @@
             <span class="metric-label">Tags</span>
             <strong id="tag-count">0</strong>
           </div>
-          <div class="metric">
+          <div class="metric metric-view" aria-label="뷰 전환">
             <span class="metric-label">View</span>
-            <strong>Bilingual</strong>
+            <div class="view-toggle" role="group" aria-label="표시 방식 선택">
+              <button id="list-view-button" type="button" class="view-button is-active" aria-pressed="true">
+                List
+              </button>
+              <button id="constellation-view-button" type="button" class="view-button" aria-pressed="false">
+                Constellation
+              </button>
+            </div>
           </div>
           <div class="action-panel">
             <p class="action-label">Curated action</p>
@@ -103,6 +110,13 @@
         </section>
 
         <section id="quote-grid" class="quote-grid" aria-live="polite"></section>
+        <section
+          id="quote-canvas"
+          class="quote-canvas"
+          aria-label="명언 별자리 보기"
+          aria-live="polite"
+          hidden
+        ></section>
 
         <template id="quote-card-template">
           <article class="quote-card">
@@ -116,7 +130,6 @@
             <div class="quote-tags"></div>
           </article>
         </template>
-
       </main>
     </div>
 

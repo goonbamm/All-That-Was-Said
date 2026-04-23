@@ -6,7 +6,8 @@ from pathlib import Path
 
 
 DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "quotes.json"
-REQUIRED_KEYS = {"id", "text", "source", "tags"}
+REQUIRED_KEYS = {"id", "text", "source", "tags", "mood"}
+ALLOWED_MOODS = {"calm", "fierce", "hopeful", "reflective"}
 
 
 def main() -> int:
@@ -43,11 +44,17 @@ def main() -> int:
             return 1
         seen_ids.add(quote_id)
 
-        for key in ("text", "source"):
+        for key in ("text", "source", "mood"):
             value = quote[key]
             if not isinstance(value, str) or not value.strip():
                 print(f"Validation failed: item {index} has an invalid '{key}'.")
                 return 1
+
+        mood = quote["mood"].strip().lower()
+        if mood not in ALLOWED_MOODS:
+            allowed = ", ".join(sorted(ALLOWED_MOODS))
+            print(f"Validation failed: item {index} mood must be one of: {allowed}.")
+            return 1
 
         tags = quote["tags"]
         if not isinstance(tags, list) or not tags:
