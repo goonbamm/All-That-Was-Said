@@ -450,13 +450,20 @@ h1 {
   stroke-width: 0.32;
 }
 
+.quote-canvas:has(.constellation-node.is-active) .constellation-link.is-same-mood {
+  stroke-opacity: 1;
+  stroke-width: 0.37;
+}
+
 .constellation-node {
+  --active-glow-color: rgba(124, 217, 202, 0.22);
   position: absolute;
   z-index: 1;
   width: 17px;
   height: 17px;
   border: 0;
   border-radius: 50%;
+  isolation: isolate;
   background: rgba(67, 49, 39, 0.8);
   box-shadow:
     0 0 0 4px rgba(255, 247, 236, 0.4),
@@ -464,15 +471,32 @@ h1 {
   animation: twinkle 3.6s ease-in-out infinite;
 }
 
+.constellation-node::after {
+  position: absolute;
+  inset: 50%;
+  width: 460%;
+  height: 460%;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--active-glow-color) 0%, transparent 72%);
+  filter: blur(16px);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
+  pointer-events: none;
+  content: "";
+}
+
 .constellation-node[data-mood="fierce"] {
+  --active-glow-color: rgba(255, 97, 176, 0.22);
   background: rgba(126, 66, 46, 0.88);
 }
 
 .constellation-node[data-mood="hopeful"] {
+  --active-glow-color: rgba(170, 121, 255, 0.21);
   background: rgba(102, 82, 52, 0.84);
 }
 
 .constellation-node[data-mood="calm"] {
+  --active-glow-color: rgba(84, 211, 196, 0.22);
   background: rgba(78, 66, 54, 0.82);
 }
 
@@ -481,8 +505,11 @@ h1 {
 }
 
 .constellation-node:focus-visible {
-  outline: 2px solid rgba(182, 91, 54, 0.52);
+  outline: 3px solid #1d1310;
   outline-offset: 3px;
+  box-shadow:
+    0 0 0 2px rgba(255, 248, 238, 0.95),
+    0 0 0 5px #1d1310;
 }
 
 .constellation-node.is-active {
@@ -490,6 +517,11 @@ h1 {
   box-shadow:
     0 0 0 5px rgba(255, 247, 236, 0.74),
     0 0 22px rgba(182, 91, 54, 0.65);
+}
+
+.constellation-node.is-active::after {
+  opacity: 1;
+  animation: active-halo 2.4s ease-in-out infinite;
 }
 
 @keyframes twinkle {
@@ -501,6 +533,18 @@ h1 {
   50% {
     opacity: 1;
     filter: saturate(120%);
+  }
+}
+
+@keyframes active-halo {
+  0%,
+  100% {
+    opacity: 0.14;
+    transform: translate(-50%, -50%) scale(0.84);
+  }
+  50% {
+    opacity: 0.24;
+    transform: translate(-50%, -50%) scale(1);
   }
 }
 
@@ -673,6 +717,12 @@ h1 {
 
   .constellation-node {
     animation: none;
+  }
+
+  .constellation-node.is-active::after {
+    animation: none;
+    opacity: 0.2;
+    transform: translate(-50%, -50%) scale(0.9);
   }
 
   .outline-button:hover,
