@@ -16,7 +16,7 @@ const state = {
   quotes: [],
   search: "",
   activeTag: "all",
-  viewMode: "list",
+  viewMode: "constellation",
   activeQuoteId: null,
   canvasAvailable: true,
 };
@@ -235,13 +235,40 @@ function renderConstellation(quotes) {
     return;
   }
 
-  const linesLayer = document.createElement("div");
+  const linesLayer = document.createElement("svg");
   linesLayer.className = "constellation-lines";
+  linesLayer.setAttribute("viewBox", "0 0 100 100");
+  linesLayer.setAttribute("preserveAspectRatio", "none");
+  linesLayer.setAttribute("aria-hidden", "true");
   quoteCanvas.appendChild(linesLayer);
 
-  quotes.forEach((quote, index) => {
+  const positions = quotes.map((quote, index) => ({
+    quote,
+    ...getConstellationPosition(quote, index),
+  }));
+
+  positions.forEach((point, index) => {
+    const previous = positions[index - 1];
+    if (!previous) {
+      return;
+    }
+
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    line.setAttribute("x1", previous.x);
+    line.setAttribute("y1", previous.y);
+    line.setAttribute("x2", point.x);
+    line.setAttribute("y2", point.y);
+    line.classList.add("constellation-link");
+
+    if (previous.quote.mood === point.quote.mood) {
+      line.classList.add("is-same-mood");
+    }
+
+    linesLayer.appendChild(line);
+  });
+
+  positions.forEach(({ quote, x, y }) => {
     const node = document.createElement("button");
-    const { x, y } = getConstellationPosition(quote, index);
 
     node.type = "button";
     node.className = "constellation-node";
