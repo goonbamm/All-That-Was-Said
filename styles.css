@@ -251,7 +251,7 @@ h1 {
 
 .control-strip {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 14px;
   margin: 28px 0 48px;
   padding: 14px;
@@ -292,7 +292,6 @@ h1 {
 .outline-button,
 .copy-button,
 .tag-filter,
-.view-button,
 .constellation-node {
   transition:
     transform 180ms ease,
@@ -317,36 +316,9 @@ h1 {
 
 .outline-button:hover,
 .copy-button:hover,
-.tag-filter:hover,
-.view-button:hover {
+.tag-filter:hover {
   transform: translateY(-2px);
   box-shadow: 0 12px 26px rgba(23, 20, 16, 0.11);
-}
-
-.metric-view {
-  gap: 12px;
-}
-
-.view-toggle {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 8px;
-}
-
-.view-button {
-  min-height: 42px;
-  border: 1px solid rgba(23, 20, 16, 0.16);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.45);
-  color: var(--ink);
-  font: inherit;
-  font-weight: 600;
-}
-
-.view-button.is-active {
-  border-color: transparent;
-  background: linear-gradient(135deg, #181411, #2a1d17);
-  color: #fff7ef;
 }
 
 .archive-intro {
@@ -695,7 +667,6 @@ h1 {
   .outline-button,
   .copy-button,
   .tag-filter,
-  .view-button,
   .constellation-node {
     transition: none;
   }
@@ -707,7 +678,6 @@ h1 {
   .outline-button:hover,
   .copy-button:hover,
   .tag-filter:hover,
-  .view-button:hover,
   .constellation-node:hover,
   .constellation-node.is-active {
     transform: none;

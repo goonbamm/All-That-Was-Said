@@ -9,14 +9,11 @@ const heroQuote = document.querySelector("#hero-quote");
 const heroOriginal = document.querySelector("#hero-original");
 const heroSource = document.querySelector("#hero-source");
 const randomButton = document.querySelector("#random-button");
-const listViewButton = document.querySelector("#list-view-button");
-const constellationViewButton = document.querySelector("#constellation-view-button");
 
 const state = {
   quotes: [],
   search: "",
   activeTag: "all",
-  viewMode: "constellation",
   activeQuoteId: null,
   canvasAvailable: true,
 };
@@ -287,18 +284,6 @@ function renderConstellation(quotes) {
   });
 }
 
-function renderViewToggle() {
-  const isList = state.viewMode === "list";
-
-  listViewButton.classList.toggle("is-active", isList);
-  constellationViewButton.classList.toggle("is-active", !isList);
-  listViewButton.setAttribute("aria-pressed", `${isList}`);
-  constellationViewButton.setAttribute("aria-pressed", `${!isList}`);
-
-  quoteGrid.hidden = !isList;
-  quoteCanvas.hidden = isList;
-}
-
 function render() {
   const filteredQuotes = filterQuotes();
 
@@ -310,11 +295,12 @@ function render() {
   } catch (error) {
     console.error("Constellation view failed, fallback to list", error);
     state.canvasAvailable = false;
-    state.viewMode = "list";
     quoteCanvas.hidden = true;
   }
-
-  renderViewToggle();
+  if (state.canvasAvailable) {
+    quoteCanvas.hidden = false;
+  }
+  quoteGrid.hidden = false;
 
   const heroTarget =
     filteredQuotes.find((quote) => quote.id === state.activeQuoteId) ||
@@ -332,16 +318,6 @@ function bindEvents() {
   searchInput.addEventListener("input", (event) => {
     state.search = event.target.value;
     render();
-  });
-
-  listViewButton.addEventListener("click", () => {
-    state.viewMode = "list";
-    renderViewToggle();
-  });
-
-  constellationViewButton.addEventListener("click", () => {
-    state.viewMode = "constellation";
-    renderViewToggle();
   });
 
   randomButton.addEventListener("click", () => {
