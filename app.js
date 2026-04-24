@@ -248,6 +248,19 @@ function buildRelationLabel(target, candidate, sharedTags) {
   return "같이 읽기";
 }
 
+function buildRelationKind(target, candidate, sharedTags) {
+  if (getComparablePersonName(target) === getComparablePersonName(candidate)) {
+    return "person";
+  }
+  if (target.source === candidate.source) {
+    return "source";
+  }
+  if (sharedTags.length > 0) {
+    return "tag";
+  }
+  return "echo";
+}
+
 function getRelatedQuotes(target, quotes, limit) {
   if (!target) {
     return [];
@@ -278,7 +291,9 @@ function getRelatedQuotes(target, quotes, limit) {
 
       return {
         quote,
+        sharedTags,
         relation: buildRelationLabel(target, quote, sharedTags),
+        relationKind: buildRelationKind(target, quote, sharedTags),
         score,
       };
     })
@@ -304,15 +319,20 @@ function createMapCard(quote, options = {}) {
   button.dataset.quoteId = quote.id;
   button.setAttribute("aria-label", `${options.relation ? `${options.relation} · ` : ""}${quote.quote.slice(0, 40)}`);
 
-  const relation = options.relation
+  const relation = options.showRelation && options.relation
     ? `<span class="constellation-card-relation">${options.relation}</span>`
     : "";
+  const relationBadge = options.relationKind
+    ? `<span class="constellation-badge" data-relation-kind="${options.relationKind}" aria-hidden="true"></span>`
+    : "";
+  const meta = options.showMeta === false ? "" : `<span class="constellation-card-meta">${buildMeta(quote)}</span>`;
 
   button.innerHTML = `
     <span class="constellation-card-shell">
+      ${relationBadge}
       ${relation}
       <span class="constellation-card-quote">${quote.quote}</span>
-      <span class="constellation-card-meta">${buildMeta(quote)}</span>
+      ${meta}
     </span>
   `;
 
@@ -328,15 +348,16 @@ function createMapNode(item, index) {
   button.type = "button";
   button.className = "constellation-node";
   button.dataset.quoteId = item.quote.id;
+  button.dataset.relationKind = item.relationKind;
   button.style.setProperty("--node-delay", `${(index * 140).toFixed(0)}ms`);
+  button.style.setProperty("--node-strength", `${Math.max(0.72, Math.min(1.34, item.score / 7)).toFixed(2)}`);
   button.setAttribute("aria-label", `${item.relation} · ${item.quote.quote.slice(0, 32)}`);
 
   button.innerHTML = `
     <span class="constellation-node-core"></span>
     <span class="constellation-node-label">
-      <span class="constellation-node-relation">${item.relation}</span>
+      <span class="constellation-badge" data-relation-kind="${item.relationKind}" aria-hidden="true"></span>
       <span class="constellation-node-title">${item.quote.quote}</span>
-      <span class="constellation-node-meta">${buildMeta(item.quote)}</span>
     </span>
   `;
 
@@ -347,25 +368,48 @@ function createMapNode(item, index) {
   return button;
 }
 
-function getDesktopOrbitPosition(index, total) {
-  const angles = [-88, -34, 20, 68, 122, 182, 235];
-  const radii = [31, 38, 34, 39, 35, 38, 31];
-  const angle = ((angles[index] ?? (index * 52 - 90)) * Math.PI) / 180;
-  const radius = radii[index] ?? 36;
+function createMapAtmosphere() {
+  const atmosphere = document.createElement("div");
+  atmosphere.className = "constellation-atmosphere";
+  atmosphere.setAttribute("aria-hidden", "true");
+  atmosphere.innerHTML = `
+    <span class="constellation-nebula is-one"></span>
+    <span class="constellation-nebula is-two"></span>
+    <span class="constellation-nebula is-three"></span>
+    <span class="constellation-starfield is-far"></span>
+    <span class="constellation-starfield is-near"></span>
+    <span class="constellation-halo-grid"></span>
+  `;
+  return atmosphere;
+}
 
-  return {
-    x: 50 + Math.cos(angle) * radius,
-    y: 50 + Math.sin(angle) * (total <= 4 ? radius * 0.74 : radius * 0.82),
+function getDesktopStarPosition(index) {
+  const route = [
+    { x: 39, y: 28 },
+    { x: 51, y: 61 },
+    { x: 66, y: 24 },
+    { x: 78, y: 54 },
+    { x: 88, y: 30 },
+    { x: 71, y: 76 },
+  ];
+
+  return route[index] ?? {
+    x: 42 + index * 8,
+    y: index % 2 === 0 ? 30 : 66,
   };
 }
 
 function drawDesktopConnections(svg, nodes) {
+  const start = { x: 24, y: 52 };
+
   nodes.forEach((node, index) => {
+    const prev = index === 0 ? start : nodes[index - 1];
     const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    const controlY = node.y < 50 ? 42 : 58;
+    const midX = (prev.x + node.x) / 2;
+    const controlY = index % 2 === 0 ? Math.min(prev.y, node.y) - 6 : Math.max(prev.y, node.y) + 6;
     line.setAttribute(
       "d",
-      `M 50 50 Q ${(50 + node.x) / 2} ${controlY} ${node.x} ${node.y}`
+      `M ${prev.x} ${prev.y} C ${midX} ${prev.y}, ${midX} ${controlY}, ${node.x} ${node.y}`
     );
     line.classList.add("constellation-link");
     line.style.setProperty("--line-delay", `${index * 120}ms`);
@@ -389,21 +433,18 @@ function renderDesktopMap(target, relatedQuotes) {
   heading.innerHTML = `
     <p class="constellation-eyebrow">Sentence Atlas</p>
     <h2 class="constellation-title">문장 항해도</h2>
-    <p class="constellation-copy">지금 선택한 문장을 중심으로, 같은 사람과 태그, 같은 출처에서 이어지는 기록만 궤도로 묶었습니다.</p>
   `;
   shell.appendChild(heading);
 
-  const orbitRing = document.createElement("div");
-  orbitRing.className = "constellation-orbit-ring";
-  shell.appendChild(orbitRing);
+  shell.appendChild(createMapAtmosphere());
 
-  const centerCard = createMapCard(target, { variant: "focus", isActive: true });
-  centerCard.classList.add("constellation-focus-card");
+  const centerCard = createMapCard(target, { variant: "focus", isActive: true, showMeta: false });
+  centerCard.classList.add("constellation-focus-card", "constellation-origin-card");
   shell.appendChild(centerCard);
 
   const nodes = relatedQuotes.map((item, index) => ({
     item,
-    ...getDesktopOrbitPosition(index, relatedQuotes.length),
+    ...getDesktopStarPosition(index),
   }));
 
   drawDesktopConnections(linesLayer, nodes);
@@ -427,7 +468,6 @@ function renderMobileMap(target, relatedQuotes) {
   heading.innerHTML = `
     <p class="constellation-eyebrow">Sentence Atlas</p>
     <h2 class="constellation-title">문장 항해도</h2>
-    <p class="constellation-copy">모바일에서는 중심 기록에서 이어지는 문장만 아래로 따라가며 읽도록 단순하게 정리했습니다.</p>
   `;
   shell.appendChild(heading);
 
@@ -435,7 +475,7 @@ function renderMobileMap(target, relatedQuotes) {
   trail.className = "constellation-trail";
   shell.appendChild(trail);
 
-  const focusCard = createMapCard(target, { variant: "focus", isActive: true });
+  const focusCard = createMapCard(target, { variant: "focus", isActive: true, showMeta: false });
   focusCard.classList.add("constellation-trail-focus");
   trail.appendChild(focusCard);
 
@@ -450,8 +490,9 @@ function renderMobileMap(target, relatedQuotes) {
 
     const branch = createMapCard(item.quote, {
       variant: "branch",
-      relation: item.relation,
+      relationKind: item.relationKind,
       isActive: state.activeQuoteId === item.quote.id,
+      showMeta: false,
     });
     branch.classList.add("constellation-trail-card");
 
