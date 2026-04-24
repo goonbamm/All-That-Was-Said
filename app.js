@@ -2,9 +2,7 @@ const quoteGrid = document.querySelector("#quote-grid");
 const quoteCanvas = document.querySelector("#quote-canvas");
 const quoteTemplate = document.querySelector("#quote-card-template");
 const searchInput = document.querySelector("#search-input");
-const tagFilters = document.querySelector("#tag-filters");
 const quoteCount = document.querySelector("#quote-count");
-const tagCount = document.querySelector("#tag-count");
 const heroQuote = document.querySelector("#hero-quote");
 const heroSource = document.querySelector("#hero-source");
 const randomButton = document.querySelector("#random-button");
@@ -14,7 +12,6 @@ const statusMessage = document.querySelector("#status-message");
 const state = {
   quotes: [],
   search: "",
-  activeTag: "all",
   activeQuoteId: null,
   canvasAvailable: true,
 };
@@ -93,8 +90,6 @@ function filterQuotes() {
   const search = normalizeText(state.search);
 
   return state.quotes.filter((quote) => {
-    const matchesTag = state.activeTag === "all" || quote.tags.includes(state.activeTag);
-
     const haystack = normalizeText(
       [
         quote.quote,
@@ -107,7 +102,7 @@ function filterQuotes() {
     );
     const matchesSearch = search === "" || haystack.includes(search);
 
-    return matchesTag && matchesSearch;
+    return matchesSearch;
   });
 }
 
@@ -120,38 +115,6 @@ function renderHero(quote) {
 
   heroQuote.textContent = quote.quote;
   heroSource.textContent = buildSourceLine(quote);
-}
-
-function renderTagFilters(quotes) {
-  const uniqueTags = [...new Set(quotes.flatMap((quote) => quote.tags))].sort((a, b) =>
-    a.localeCompare(b, "ko")
-  );
-
-  tagCount.textContent = `${uniqueTags.length}`;
-  tagFilters.innerHTML = "";
-
-  const tagEntries = [
-    { key: "all", label: "전체" },
-    ...uniqueTags.map((tag) => ({ key: tag, label: tag })),
-  ];
-
-  tagEntries.forEach((tag) => {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.className = "tag-filter";
-    button.textContent = tag.label;
-
-    if (state.activeTag === tag.key) {
-      button.classList.add("is-active");
-    }
-
-    button.addEventListener("click", () => {
-      state.activeTag = tag.key;
-      render();
-    });
-
-    tagFilters.appendChild(button);
-  });
 }
 
 async function copyQuote(quote) {
@@ -212,7 +175,7 @@ function renderList(quotes) {
 
   if (quotes.length === 0) {
     quoteGrid.classList.remove("has-active");
-    quoteGrid.appendChild(createEmptyState("조건에 맞는 문장이 없습니다. 검색어를 바꾸거나 태그를 초기화해 보세요."));
+    quoteGrid.appendChild(createEmptyState("조건에 맞는 문장이 없습니다. 검색어를 바꿔 보세요."));
     return;
   }
 
@@ -287,8 +250,8 @@ function getConstellationPosition(quote, index) {
   const yBase = moodBandHeight * moodIndex + moodBandHeight / 2;
   const yJitter = ((hashString(`${quote.id}-y`) % 17) - 8) * 0.75;
   const xByIndex = ((index + 1) / (state.quotes.length + 1)) * 100;
-  const xByTag = hashString(quote.tags[0] || quote.id) % 31;
-  const x = Math.min(96, Math.max(6, xByIndex * 0.7 + xByTag * 1.1));
+  const xById = hashString(`${quote.id}-x`) % 31;
+  const x = Math.min(96, Math.max(6, xByIndex * 0.7 + xById * 1.1));
 
   return {
     x,
@@ -363,7 +326,6 @@ function renderConstellation(quotes) {
 function render() {
   const filteredQuotes = filterQuotes();
 
-  renderTagFilters(state.quotes);
   renderList(filteredQuotes);
 
   try {
