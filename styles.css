@@ -485,16 +485,6 @@ h1 {
   stroke-linecap: round;
 }
 
-.constellation-link.is-same-mood {
-  stroke: rgba(182, 91, 54, 0.32);
-  stroke-width: 0.32;
-}
-
-.quote-canvas:has(.constellation-node.is-active) .constellation-link.is-same-mood {
-  stroke-opacity: 1;
-  stroke-width: 0.37;
-}
-
 .constellation-node {
   --active-glow-color: rgba(124, 217, 202, 0.22);
   position: absolute;
@@ -523,21 +513,6 @@ h1 {
   transform: translate(-50%, -50%) scale(0.8);
   pointer-events: none;
   content: "";
-}
-
-.constellation-node[data-mood="fierce"] {
-  --active-glow-color: rgba(255, 97, 176, 0.22);
-  background: rgba(126, 66, 46, 0.88);
-}
-
-.constellation-node[data-mood="hopeful"] {
-  --active-glow-color: rgba(170, 121, 255, 0.21);
-  background: rgba(102, 82, 52, 0.84);
-}
-
-.constellation-node[data-mood="calm"] {
-  --active-glow-color: rgba(84, 211, 196, 0.22);
-  background: rgba(78, 66, 54, 0.82);
 }
 
 .constellation-node:hover {
