@@ -22,13 +22,6 @@ const state = {
 
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const MOOD_BANDS = ["calm", "reflective", "hopeful", "fierce"];
-const MOOD_LABELS = {
-  calm: "고요",
-  reflective: "성찰",
-  hopeful: "희망",
-  fierce: "강렬",
-};
-
 let statusTimeoutId = null;
 
 function normalizeText(value) {
@@ -43,12 +36,8 @@ function buildMeta(quote) {
   return details.join(" · ");
 }
 
-function formatMoodLabel(mood) {
-  return MOOD_LABELS[mood] || mood;
-}
-
 function buildSourceLine(quote) {
-  return `${buildMeta(quote)} · 분위기 ${formatMoodLabel(quote.mood)}`;
+  return buildMeta(quote);
 }
 
 function setStatus(message) {
@@ -178,6 +167,9 @@ function setActiveQuote(quote, options = {}) {
 
   if (card) {
     card.classList.add("is-active");
+    quoteGrid.classList.add("has-active");
+  } else {
+    quoteGrid.classList.remove("has-active");
   }
 
   quoteCanvas.querySelectorAll(".constellation-node.is-active").forEach((node) => {
@@ -197,6 +189,7 @@ function renderList(quotes) {
   quoteCount.textContent = `${quotes.length}`;
 
   if (quotes.length === 0) {
+    quoteGrid.classList.remove("has-active");
     quoteGrid.appendChild(createEmptyState("조건에 맞는 문장이 없습니다. 검색어를 바꾸거나 태그를 초기화해 보세요."));
     return;
   }
