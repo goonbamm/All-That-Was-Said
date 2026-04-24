@@ -20,6 +20,7 @@ const state = {
 };
 
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const mobileQuery = window.matchMedia("(max-width: 720px)");
 const MOOD_BANDS = ["calm", "reflective", "hopeful", "fierce"];
 let statusTimeoutId = null;
 
@@ -37,6 +38,30 @@ function buildMeta(quote) {
 
 function buildSourceLine(quote) {
   return buildMeta(quote);
+}
+
+function buildAuthorLine(author) {
+  return `— ${author}`;
+}
+
+function applyQuoteClamp(quoteText, toggleButton) {
+  quoteText.classList.remove("is-clamped", "is-expanded");
+  toggleButton.hidden = true;
+  toggleButton.textContent = "펼치기";
+  toggleButton.setAttribute("aria-expanded", "false");
+
+  if (!mobileQuery.matches) {
+    return;
+  }
+
+  quoteText.classList.add("is-clamped");
+  const hasOverflow = quoteText.scrollHeight > quoteText.clientHeight + 1;
+
+  if (hasOverflow) {
+    toggleButton.hidden = false;
+  } else {
+    quoteText.classList.remove("is-clamped");
+  }
 }
 
 function setStatus(message) {
@@ -196,13 +221,24 @@ function renderList(quotes) {
     const article = fragment.querySelector(".quote-card");
     const quoteIndex = fragment.querySelector(".quote-index");
     const quoteText = fragment.querySelector(".quote-text");
-    const quoteMeta = fragment.querySelector(".quote-meta");
+    const quoteAuthor = fragment.querySelector(".quote-author");
+    const quoteSource = fragment.querySelector(".quote-source");
+    const expandToggle = fragment.querySelector(".quote-expand-toggle");
     const copyButton = fragment.querySelector(".copy-button");
     const quoteTags = fragment.querySelector(".quote-tags");
 
     quoteIndex.textContent = `No. ${String(index + 1).padStart(2, "0")}`;
     quoteText.textContent = quote.quote;
-    quoteMeta.textContent = buildSourceLine(quote);
+    quoteAuthor.textContent = buildAuthorLine(quote.author_name);
+    quoteSource.textContent = quote.source;
+    expandToggle.setAttribute("aria-label", "문장 전체 보기");
+    expandToggle.addEventListener("click", () => {
+      const isExpanded = quoteText.classList.contains("is-expanded");
+      quoteText.classList.toggle("is-expanded", !isExpanded);
+      quoteText.classList.toggle("is-clamped", isExpanded);
+      expandToggle.textContent = isExpanded ? "펼치기" : "접기";
+      expandToggle.setAttribute("aria-expanded", String(!isExpanded));
+    });
 
     copyButton.addEventListener("click", async () => {
       await copyQuote(quote);
@@ -224,7 +260,7 @@ function renderList(quotes) {
     article.setAttribute("tabindex", "0");
     article.setAttribute("aria-label", `${quote.quote.slice(0, 24)} 문장 보기`);
     article.addEventListener("click", (event) => {
-      if (event.target.closest(".copy-button")) {
+      if (event.target.closest(".copy-button") || event.target.closest(".quote-expand-toggle")) {
         return;
       }
       setActiveQuote(quote, { scrollToCard: false });
@@ -237,6 +273,7 @@ function renderList(quotes) {
       setActiveQuote(quote, { scrollToCard: false });
     });
     quoteGrid.appendChild(fragment);
+    requestAnimationFrame(() => applyQuoteClamp(quoteText, expandToggle));
   });
 }
 
@@ -371,6 +408,10 @@ function bindEvents() {
     const randomQuote = visibleQuotes[randomIndex];
     setActiveQuote(randomQuote, { scrollToCard: true });
     setStatus("추천 문장을 보여드렸어요.");
+  });
+
+  mobileQuery.addEventListener("change", () => {
+    render();
   });
 
   if (focusCard) {
