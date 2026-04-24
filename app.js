@@ -10,6 +10,7 @@ const heroOriginal = document.querySelector("#hero-original");
 const heroSource = document.querySelector("#hero-source");
 const randomButton = document.querySelector("#random-button");
 const focusCard = document.querySelector("#focus-card");
+const statusMessage = document.querySelector("#status-message");
 
 const state = {
   quotes: [],
@@ -21,6 +22,14 @@ const state = {
 
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const MOOD_BANDS = ["calm", "reflective", "hopeful", "fierce"];
+const MOOD_LABELS = {
+  calm: "고요",
+  reflective: "성찰",
+  hopeful: "희망",
+  fierce: "강렬",
+};
+
+let statusTimeoutId = null;
 
 function normalizeText(value) {
   return value.trim().toLowerCase();
@@ -32,6 +41,30 @@ function buildMeta(quote) {
     details.push(quote.section);
   }
   return details.join(" · ");
+}
+
+function formatMoodLabel(mood) {
+  return MOOD_LABELS[mood] || mood;
+}
+
+function buildSourceLine(quote) {
+  return `${buildMeta(quote)} · 분위기 ${formatMoodLabel(quote.mood)}`;
+}
+
+function setStatus(message) {
+  if (!statusMessage) {
+    return;
+  }
+  statusMessage.textContent = message;
+  statusMessage.classList.add("is-visible");
+
+  if (statusTimeoutId) {
+    clearTimeout(statusTimeoutId);
+  }
+  statusTimeoutId = window.setTimeout(() => {
+    statusMessage.classList.remove("is-visible");
+    statusMessage.textContent = "";
+  }, 1800);
 }
 
 function pickDailyQuote(quotes) {
@@ -67,15 +100,15 @@ function filterQuotes() {
 
 function renderHero(quote) {
   if (!quote) {
-    heroQuote.textContent = "명언을 추가하면 이 자리에서 오늘의 문장을 보여줍니다.";
-    heroOriginal.textContent = "Original text appears here.";
-    heroSource.textContent = "data/quotes.json";
+    heroQuote.textContent = "문장을 추가하면 이곳에 오늘의 문장이 나타납니다.";
+    heroOriginal.textContent = "원문이 여기에 함께 표시됩니다.";
+    heroSource.textContent = "출처 정보가 여기에 표시됩니다.";
     return;
   }
 
   heroQuote.textContent = quote.text;
   heroOriginal.textContent = quote.original || "";
-  heroSource.textContent = `${buildMeta(quote)} · mood ${quote.mood}`;
+  heroSource.textContent = buildSourceLine(quote);
 }
 
 function renderTagFilters(quotes) {
@@ -178,14 +211,15 @@ function renderList(quotes) {
     const copyButton = fragment.querySelector(".copy-button");
     const quoteTags = fragment.querySelector(".quote-tags");
 
-    quoteIndex.textContent = `${String(index + 1).padStart(2, "0")} / ${quote.id}`;
+    quoteIndex.textContent = `No. ${String(index + 1).padStart(2, "0")}`;
     quoteText.textContent = quote.text;
     quoteOriginal.textContent = quote.original || "";
-    quoteMeta.textContent = `${buildMeta(quote)} · mood ${quote.mood}`;
+    quoteMeta.textContent = buildSourceLine(quote);
 
     copyButton.addEventListener("click", async () => {
       await copyQuote(quote);
       copyButton.textContent = "복사됨";
+      setStatus("문장을 복사했습니다.");
       window.setTimeout(() => {
         copyButton.textContent = "복사";
       }, 1200);
@@ -198,6 +232,22 @@ function renderList(quotes) {
     });
 
     article.dataset.quoteId = quote.id;
+    article.setAttribute("role", "button");
+    article.setAttribute("tabindex", "0");
+    article.setAttribute("aria-label", `${quote.text.slice(0, 24)} 문장 보기`);
+    article.addEventListener("click", (event) => {
+      if (event.target.closest(".copy-button")) {
+        return;
+      }
+      setActiveQuote(quote, { scrollToCard: false });
+    });
+    article.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") {
+        return;
+      }
+      event.preventDefault();
+      setActiveQuote(quote, { scrollToCard: false });
+    });
     quoteGrid.appendChild(fragment);
   });
 }
@@ -325,12 +375,14 @@ function bindEvents() {
     const visibleQuotes = filterQuotes();
 
     if (visibleQuotes.length === 0) {
+      setStatus("현재 조건에서 고를 수 있는 문장이 없습니다.");
       return;
     }
 
     const randomIndex = Math.floor(Math.random() * visibleQuotes.length);
     const randomQuote = visibleQuotes[randomIndex];
     setActiveQuote(randomQuote, { scrollToCard: true });
+    setStatus("추천 문장을 보여드렸어요.");
   });
 
   if (focusCard) {

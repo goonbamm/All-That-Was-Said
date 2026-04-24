@@ -288,6 +288,20 @@ h1 {
   background: rgba(255, 251, 244, 0.54);
 }
 
+.status-message {
+  min-height: 1.4rem;
+  margin: -34px 0 30px;
+  color: rgba(45, 31, 24, 0.78);
+  font-size: 0.9rem;
+  letter-spacing: -0.01em;
+  opacity: 0;
+  transition: opacity 160ms ease;
+}
+
+.status-message.is-visible {
+  opacity: 1;
+}
+
 .metric,
 .action-panel {
   min-height: 94px;
@@ -591,6 +605,7 @@ h1 {
     transform 180ms ease,
     box-shadow 180ms ease,
     border-color 180ms ease;
+  cursor: pointer;
 }
 
 .quote-card:hover {
@@ -601,6 +616,11 @@ h1 {
 .quote-card.is-active {
   border-color: rgba(182, 91, 54, 0.52);
   box-shadow: 0 24px 52px rgba(53, 37, 26, 0.14);
+}
+
+.quote-card:focus-visible {
+  outline: 3px solid rgba(45, 31, 24, 0.84);
+  outline-offset: 3px;
 }
 
 .quote-card-top {
