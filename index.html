@@ -25,7 +25,7 @@
       <header class="hero">
         <div class="hero-topline">
           <p class="eyebrow">ALL THAT WAS SAID</p>
-          <p class="hero-edition">Archive Edition 01</p>
+          <p class="hero-edition">Curated Archive</p>
         </div>
         <div class="hero-grid">
           <div class="hero-copy-block">
@@ -38,13 +38,11 @@
               한국어 번역과 원문으로 함께 읽는 인용 아카이브. 작가와 시대를
               가로질러 다시 꺼내 보고 싶은 문장들을 감각적인 화면으로 정리합니다.
             </p>
-            <p class="hero-note">
-              An archive of lines worth returning to, across authors and eras.
-            </p>
+            <p class="hero-note">시대와 작가를 건너 다시 꺼내 읽는 문장들.</p>
           </div>
 
           <aside class="hero-card" id="focus-card" data-depth-card>
-            <p class="card-label">Featured fragment</p>
+            <p class="card-label">오늘의 문장</p>
             <blockquote id="hero-quote" class="hero-quote"></blockquote>
             <p id="hero-original" class="hero-original"></p>
             <p id="hero-source" class="hero-source"></p>
@@ -63,20 +61,21 @@
 
         <section class="control-strip">
           <div class="metric">
-            <span class="metric-label">Quotes</span>
+            <span class="metric-label">문장 수</span>
             <strong id="quote-count">0</strong>
           </div>
           <div class="metric">
-            <span class="metric-label">Tags</span>
+            <span class="metric-label">태그 수</span>
             <strong id="tag-count">0</strong>
           </div>
           <div class="action-panel">
-            <p class="action-label">Curated action</p>
+            <p class="action-label">한 줄 추천</p>
             <button id="random-button" class="outline-button" type="button">
-              랜덤 문장 보기
+              한 줄 추천 받기
             </button>
           </div>
         </section>
+        <p id="status-message" class="status-message" aria-live="polite"></p>
 
         <section class="archive-intro">
           <div>
