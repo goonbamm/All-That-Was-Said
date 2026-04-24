@@ -18,7 +18,6 @@ const state = {
 
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 const mobileQuery = window.matchMedia("(max-width: 720px)");
-const MOOD_BANDS = ["calm", "reflective", "hopeful", "fierce"];
 let statusTimeoutId = null;
 
 function normalizeText(value) {
@@ -96,7 +95,6 @@ function filterQuotes() {
         quote.author_name,
         quote.source,
         quote.section || "",
-        quote.mood || "",
         quote.tags.join(" "),
       ].join(" ")
     );
@@ -238,10 +236,8 @@ function hashString(value) {
 }
 
 function getConstellationPosition(quote, index) {
-  const moodIndex = Math.max(0, MOOD_BANDS.indexOf(quote.mood));
-  const moodBandHeight = 100 / MOOD_BANDS.length;
-  const yBase = moodBandHeight * moodIndex + moodBandHeight / 2;
-  const yJitter = ((hashString(`${quote.id}-y`) % 17) - 8) * 0.75;
+  const yBase = 18 + (hashString(`${quote.id}-y-base`) % 64);
+  const yJitter = ((hashString(`${quote.id}-y`) % 13) - 6) * 0.9;
   const xByIndex = ((index + 1) / (state.quotes.length + 1)) * 100;
   const xById = hashString(`${quote.id}-x`) % 31;
   const x = Math.min(96, Math.max(6, xByIndex * 0.7 + xById * 1.1));
@@ -289,10 +285,6 @@ function renderConstellation(quotes) {
     line.setAttribute("y2", point.y);
     line.classList.add("constellation-link");
 
-    if (previous.quote.mood === point.quote.mood) {
-      line.classList.add("is-same-mood");
-    }
-
     linesLayer.appendChild(line);
   });
 
@@ -302,10 +294,9 @@ function renderConstellation(quotes) {
     node.type = "button";
     node.className = "constellation-node";
     node.dataset.quoteId = quote.id;
-    node.dataset.mood = quote.mood;
     node.style.left = `${x}%`;
     node.style.top = `${y}%`;
-    node.setAttribute("aria-label", `${quote.id} · ${quote.mood} · ${quote.quote.slice(0, 28)}...`);
+    node.setAttribute("aria-label", `${quote.id} · ${quote.quote.slice(0, 28)}...`);
     node.setAttribute("aria-current", "false");
 
     node.addEventListener("click", () => {
