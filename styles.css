@@ -1779,16 +1779,29 @@ h1 {
   .quote-canvas {
     min-height: auto;
     border-radius: 24px;
+    background:
+      radial-gradient(circle at 50% -10%, rgba(250, 224, 183, 0.42), transparent 46%),
+      linear-gradient(180deg, rgba(255, 253, 249, 0.95), rgba(245, 234, 214, 0.88));
+  }
+
+  .quote-canvas::before {
+    opacity: 0.24;
+    background-size: 144px 144px, 144px 144px, 40px 40px;
   }
 
   .quote-canvas::after {
     inset: 12px;
     border-radius: 20px;
+    border-color: rgba(45, 31, 24, 0.05);
   }
 
   .constellation-map {
     min-height: auto;
     padding: 22px 18px 20px;
+  }
+
+  .constellation-map::after {
+    opacity: 0;
   }
 
   .constellation-heading {
@@ -1814,11 +1827,15 @@ h1 {
 
   .constellation-trail {
     margin-top: 20px;
-    padding-left: 12px;
+    padding-left: 10px;
+    gap: 12px;
   }
 
   .constellation-trail::before {
-    left: 10px;
+    top: 28px;
+    left: 9px;
+    bottom: 12px;
+    background: linear-gradient(180deg, rgba(182, 91, 54, 0.28), rgba(45, 31, 24, 0.08));
   }
 
   .trail-stop {
@@ -1840,14 +1857,39 @@ h1 {
   }
 
   .constellation-card-shell {
-    padding: 18px 18px 16px;
+    gap: 8px;
+    padding: 16px 16px 14px;
     border-radius: 22px;
+    box-shadow:
+      0 10px 24px rgba(53, 37, 26, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  }
+
+  .constellation-trail-card .constellation-card-shell {
+    border-color: rgba(45, 31, 24, 0.08);
+    background:
+      linear-gradient(180deg, rgba(255, 252, 246, 0.96), rgba(250, 241, 226, 0.84)),
+      rgba(255, 249, 241, 0.72);
+  }
+
+  .constellation-trail-card .constellation-card-quote {
+    font-size: 1rem;
+    line-height: 1.48;
   }
 
   .constellation-focus-card .constellation-card-shell {
     padding: 22px 20px 18px;
     border-radius: 24px;
+    box-shadow:
+      0 16px 32px rgba(45, 30, 21, 0.16),
+      0 0 0 1px rgba(182, 91, 54, 0.18),
+      0 0 0 6px rgba(182, 91, 54, 0.06);
     animation: none;
+  }
+
+  .constellation-focus-card .constellation-card-shell::before,
+  .constellation-focus-card .constellation-card-shell::after {
+    display: none;
   }
 }
 
