@@ -188,7 +188,6 @@ function renderList(quotes) {
     const quoteSource = fragment.querySelector(".quote-source");
     const expandToggle = fragment.querySelector(".quote-expand-toggle");
     const copyButton = fragment.querySelector(".copy-button");
-    const quoteTags = fragment.querySelector(".quote-tags");
 
     quoteIndex.textContent = `No. ${String(index + 1).padStart(2, "0")}`;
     quoteText.textContent = quote.quote;
@@ -210,12 +209,6 @@ function renderList(quotes) {
       window.setTimeout(() => {
         copyButton.textContent = "복사";
       }, 1200);
-    });
-
-    quote.tags.forEach((tag) => {
-      const item = document.createElement("span");
-      item.textContent = `#${tag}`;
-      quoteTags.appendChild(item);
     });
 
     article.dataset.quoteId = quote.id;
