@@ -6,7 +6,6 @@ const tagFilters = document.querySelector("#tag-filters");
 const quoteCount = document.querySelector("#quote-count");
 const tagCount = document.querySelector("#tag-count");
 const heroQuote = document.querySelector("#hero-quote");
-const heroOriginal = document.querySelector("#hero-original");
 const heroSource = document.querySelector("#hero-source");
 const randomButton = document.querySelector("#random-button");
 const focusCard = document.querySelector("#focus-card");
@@ -29,7 +28,7 @@ function normalizeText(value) {
 }
 
 function buildMeta(quote) {
-  const details = [quote.source];
+  const details = [quote.author_name, quote.source];
   if (quote.section) {
     details.push(quote.section);
   }
@@ -73,8 +72,8 @@ function filterQuotes() {
 
     const haystack = normalizeText(
       [
-        quote.text,
-        quote.original || "",
+        quote.quote,
+        quote.author_name,
         quote.source,
         quote.section || "",
         quote.mood || "",
@@ -90,13 +89,11 @@ function filterQuotes() {
 function renderHero(quote) {
   if (!quote) {
     heroQuote.textContent = "문장을 추가하면 이곳에 오늘의 문장이 나타납니다.";
-    heroOriginal.textContent = "원문이 여기에 함께 표시됩니다.";
     heroSource.textContent = "출처 정보가 여기에 표시됩니다.";
     return;
   }
 
-  heroQuote.textContent = quote.text;
-  heroOriginal.textContent = quote.original || "";
+  heroQuote.textContent = quote.quote;
   heroSource.textContent = buildSourceLine(quote);
 }
 
@@ -133,7 +130,7 @@ function renderTagFilters(quotes) {
 }
 
 async function copyQuote(quote) {
-  const payload = [quote.text, quote.original || "", `- ${buildMeta(quote)}`].filter(Boolean).join("\n");
+  const payload = [quote.quote, `- ${buildMeta(quote)}`].filter(Boolean).join("\n");
 
   try {
     await navigator.clipboard.writeText(payload);
@@ -199,14 +196,12 @@ function renderList(quotes) {
     const article = fragment.querySelector(".quote-card");
     const quoteIndex = fragment.querySelector(".quote-index");
     const quoteText = fragment.querySelector(".quote-text");
-    const quoteOriginal = fragment.querySelector(".quote-original");
     const quoteMeta = fragment.querySelector(".quote-meta");
     const copyButton = fragment.querySelector(".copy-button");
     const quoteTags = fragment.querySelector(".quote-tags");
 
     quoteIndex.textContent = `No. ${String(index + 1).padStart(2, "0")}`;
-    quoteText.textContent = quote.text;
-    quoteOriginal.textContent = quote.original || "";
+    quoteText.textContent = quote.quote;
     quoteMeta.textContent = buildSourceLine(quote);
 
     copyButton.addEventListener("click", async () => {
@@ -227,7 +222,7 @@ function renderList(quotes) {
     article.dataset.quoteId = quote.id;
     article.setAttribute("role", "button");
     article.setAttribute("tabindex", "0");
-    article.setAttribute("aria-label", `${quote.text.slice(0, 24)} 문장 보기`);
+    article.setAttribute("aria-label", `${quote.quote.slice(0, 24)} 문장 보기`);
     article.addEventListener("click", (event) => {
       if (event.target.closest(".copy-button")) {
         return;
@@ -317,7 +312,7 @@ function renderConstellation(quotes) {
     node.dataset.mood = quote.mood;
     node.style.left = `${x}%`;
     node.style.top = `${y}%`;
-    node.setAttribute("aria-label", `${quote.id} · ${quote.mood} · ${quote.text.slice(0, 28)}...`);
+    node.setAttribute("aria-label", `${quote.id} · ${quote.mood} · ${quote.quote.slice(0, 28)}...`);
     node.setAttribute("aria-current", "false");
 
     node.addEventListener("click", () => {

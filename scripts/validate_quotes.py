@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "quotes.json"
-REQUIRED_KEYS = {"id", "text", "source", "tags", "mood"}
+REQUIRED_KEYS = {"id", "quote", "author_name", "source", "tags", "mood"}
 ALLOWED_MOODS = {"calm", "fierce", "hopeful", "reflective"}
 
 
@@ -44,7 +44,7 @@ def main() -> int:
             return 1
         seen_ids.add(quote_id)
 
-        for key in ("text", "source", "mood"):
+        for key in ("quote", "author_name", "source", "mood"):
             value = quote[key]
             if not isinstance(value, str) or not value.strip():
                 print(f"Validation failed: item {index} has an invalid '{key}'.")
