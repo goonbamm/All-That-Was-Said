@@ -412,8 +412,7 @@ h1 {
   border-color: rgba(182, 91, 54, 0.38);
 }
 
-.tag-filters,
-.quote-tags {
+.tag-filters {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -715,17 +714,6 @@ h1 {
   font-size: 0.78rem;
   line-height: 1.5;
   letter-spacing: 0.03em;
-}
-
-.quote-tags {
-  margin-top: 16px;
-}
-
-.quote-tags span {
-  padding: 8px 13px;
-  border-radius: 999px;
-  background: var(--accent-soft);
-  font-size: 0.83rem;
 }
 
 .empty-state {
