@@ -20,16 +20,18 @@
 ```json
 {
   "id": "g007",
-  "text": "여기에 명언을 넣습니다.",
+  "quote": "여기에 명언을 넣습니다.",
+  "author_name": "저자 이름",
   "source": "괴테는 모든 것을 말했다",
   "section": "주제 또는 장 제목",
+  "original": "기존 영문 원문(보관용, UI 미노출)",
   "tags": ["태그1", "태그2"]
 }
 ```
 
 - 추가: JSON 배열 안에 객체를 하나 더 넣습니다.
 - 삭제: 원하는 객체를 지웁니다.
-- 수정: `text`, `section`, `tags` 등을 바꾸면 됩니다.
+- 수정: `quote`, `author_name`, `source`, `section`, `tags` 등을 바꾸면 됩니다.
 
 `id`는 중복되지 않게 유지하는 것이 좋습니다.
 
@@ -74,3 +76,4 @@ python scripts/validate_quotes.py
 - 필수 필드 누락 여부
 - `id` 중복 여부
 - `tags` 배열 형식 여부
+- `quote`/`author_name`/`source` 공백 여부

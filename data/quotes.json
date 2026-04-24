@@ -1,10 +1,11 @@
 [
   {
     "id": "n001",
-    "text": "춤추는 별을 낳으려면, 자기 안에 아직 혼돈을 지니고 있어야 한다.",
-    "original": "One must still have chaos in one, to give birth to a dancing star.",
+    "quote": "춤추는 별을 낳으려면, 자기 안에 아직 혼돈을 지니고 있어야 한다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Thus Spake Zarathustra",
     "section": "Zarathustra's Prologue, 5",
+    "original": "One must still have chaos in one, to give birth to a dancing star.",
     "tags": [
       "혼돈",
       "창조",
@@ -14,10 +15,11 @@
   },
   {
     "id": "n002",
-    "text": "사랑에는 언제나 얼마간의 광기가 있다. 그러나 그 광기 속에도 언제나 어떤 이성이 있다.",
-    "original": "There is always some madness in love. But there is always, also, some method in madness.",
+    "quote": "사랑에는 언제나 얼마간의 광기가 있다. 그러나 그 광기 속에도 언제나 어떤 이성이 있다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Thus Spake Zarathustra",
     "section": "On Reading and Writing",
+    "original": "There is always some madness in love. But there is always, also, some method in madness.",
     "tags": [
       "사랑",
       "광기",
@@ -27,10 +29,11 @@
   },
   {
     "id": "n003",
-    "text": "나는 춤출 줄 아는 신이 아니라면 믿지 않겠다.",
-    "original": "I should only believe in a God that would know how to dance.",
+    "quote": "나는 춤출 줄 아는 신이 아니라면 믿지 않겠다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Thus Spake Zarathustra",
     "section": "On Reading and Writing",
+    "original": "I should only believe in a God that would know how to dance.",
     "tags": [
       "춤",
       "신",
@@ -40,10 +43,11 @@
   },
   {
     "id": "n004",
-    "text": "네가 누구인지, 그것이 되어라.",
-    "original": "What does thy conscience say?—'Thou shalt become what thou art.'",
+    "quote": "네가 누구인지, 그것이 되어라.",
+    "author_name": "Friedrich Nietzsche",
     "source": "The Joyful Wisdom",
     "section": "Book Four, Aphorism 270",
+    "original": "What does thy conscience say?—'Thou shalt become what thou art.'",
     "tags": [
       "자아",
       "양심",
@@ -53,10 +57,11 @@
   },
   {
     "id": "n005",
-    "text": "삶에서 가장 큰 생산성과 가장 큰 기쁨을 얻는 비밀은 위험 속에서 사는 데 있다.",
-    "original": "The secret of realising the largest productivity and the greatest enjoyment of existence is to live in danger!",
+    "quote": "삶에서 가장 큰 생산성과 가장 큰 기쁨을 얻는 비밀은 위험 속에서 사는 데 있다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "The Joyful Wisdom",
     "section": "Book Four, Aphorism 283",
+    "original": "The secret of realising the largest productivity and the greatest enjoyment of existence is to live in danger!",
     "tags": [
       "위험",
       "삶",
@@ -66,10 +71,11 @@
   },
   {
     "id": "n006",
-    "text": "괴물과 싸우는 사람은 그 과정에서 스스로 괴물이 되지 않도록 조심해야 한다. 그리고 네가 오랫동안 심연을 들여다보면, 심연 또한 너를 들여다본다.",
-    "original": "He who fights with monsters should be careful lest he thereby become a monster. And if thou gaze long into an abyss, the abyss will also gaze into thee.",
+    "quote": "괴물과 싸우는 사람은 그 과정에서 스스로 괴물이 되지 않도록 조심해야 한다. 그리고 네가 오랫동안 심연을 들여다보면, 심연 또한 너를 들여다본다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 146",
+    "original": "He who fights with monsters should be careful lest he thereby become a monster. And if thou gaze long into an abyss, the abyss will also gaze into thee.",
     "tags": [
       "심연",
       "경계",
@@ -79,10 +85,11 @@
   },
   {
     "id": "n007",
-    "text": "사랑에서 비롯된 행위는 언제나 선과 악의 저편에서 일어난다.",
-    "original": "What is done out of love always takes place beyond good and evil.",
+    "quote": "사랑에서 비롯된 행위는 언제나 선과 악의 저편에서 일어난다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 153",
+    "original": "What is done out of love always takes place beyond good and evil.",
     "tags": [
       "사랑",
       "도덕",
@@ -92,10 +99,11 @@
   },
   {
     "id": "n008",
-    "text": "개인에게서 광기는 드문 일이다. 그러나 집단과 정당, 민족과 시대에서는 그것이 규칙이다.",
-    "original": "Insanity in individuals is something rare—but in groups, parties, nations, and epochs it is the rule.",
+    "quote": "개인에게서 광기는 드문 일이다. 그러나 집단과 정당, 민족과 시대에서는 그것이 규칙이다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 156",
+    "original": "Insanity in individuals is something rare—but in groups, parties, nations, and epochs it is the rule.",
     "tags": [
       "집단",
       "시대",
@@ -105,10 +113,11 @@
   },
   {
     "id": "n009",
-    "text": "철저히 교사인 사람은 모든 것을 오직 제자와의 관계에서만 진지하게 받아들인다. 자기 자신조차도.",
-    "original": "He who is thouroughly a teacher takes all things seriously only in relation to his pupils—even himself.",
+    "quote": "철저히 교사인 사람은 모든 것을 오직 제자와의 관계에서만 진지하게 받아들인다. 자기 자신조차도.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 63",
+    "original": "He who is thouroughly a teacher takes all things seriously only in relation to his pupils—even himself.",
     "tags": [
       "교사",
       "배움",
@@ -118,10 +127,11 @@
   },
   {
     "id": "n010",
-    "text": "지식의 매력은, 그 길에서 극복해야 할 수치가 그토록 많지 않았다면 그리 크지 않았을 것이다.",
-    "original": "The charm of knowledge would be small, were it not so much shame has to be overcome on the way to it.",
+    "quote": "지식의 매력은, 그 길에서 극복해야 할 수치가 그토록 많지 않았다면 그리 크지 않았을 것이다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 65",
+    "original": "The charm of knowledge would be small, were it not so much shame has to be overcome on the way to it.",
     "tags": [
       "지식",
       "수치",
@@ -131,10 +141,11 @@
   },
   {
     "id": "n011",
-    "text": "내가 그랬다, 하고 기억은 말한다. 나는 그럴 리 없다, 하고 자존심은 말하며 물러서지 않는다. 결국 기억이 양보한다.",
-    "original": "\"I did that,\" says my memory. \"I could not have done that,\" says my pride, and remains inexorable. Eventually—the memory yields.",
+    "quote": "내가 그랬다, 하고 기억은 말한다. 나는 그럴 리 없다, 하고 자존심은 말하며 물러서지 않는다. 결국 기억이 양보한다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 68",
+    "original": "\"I did that,\" says my memory. \"I could not have done that,\" says my pride, and remains inexorable. Eventually—the memory yields.",
     "tags": [
       "기억",
       "자존심",
@@ -144,10 +155,11 @@
   },
   {
     "id": "n012",
-    "text": "별을 아직도 너 위에 있는 것으로 느끼는 한, 너는 통찰하는 자의 눈을 갖지 못한 것이다.",
-    "original": "So long as thou feelest the stars as an \"above thee,\" thou lackest the eye of the discerning one.",
+    "quote": "별을 아직도 너 위에 있는 것으로 느끼는 한, 너는 통찰하는 자의 눈을 갖지 못한 것이다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 71",
+    "original": "So long as thou feelest the stars as an \"above thee,\" thou lackest the eye of the discerning one.",
     "tags": [
       "별",
       "통찰",
@@ -157,10 +169,11 @@
   },
   {
     "id": "n013",
-    "text": "인간을 높게 만드는 것은 위대한 감정의 힘이 아니라, 그것이 지속되는 시간이다.",
-    "original": "It is not the strength, but the duration of great sentiments that makes those high among mankind.",
+    "quote": "인간을 높게 만드는 것은 위대한 감정의 힘이 아니라, 그것이 지속되는 시간이다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 72",
+    "original": "It is not the strength, but the duration of great sentiments that makes those high among mankind.",
     "tags": [
       "감정",
       "지속",
@@ -170,10 +183,11 @@
   },
   {
     "id": "n014",
-    "text": "자기 이상에 도달한 사람은, 바로 그 때문에 그 이상을 넘어선다.",
-    "original": "He who attains his ideal, precisely thereby surpasses it.",
+    "quote": "자기 이상에 도달한 사람은, 바로 그 때문에 그 이상을 넘어선다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 73",
+    "original": "He who attains his ideal, precisely thereby surpasses it.",
     "tags": [
       "이상",
       "초월",
@@ -183,10 +197,11 @@
   },
   {
     "id": "n015",
-    "text": "평화로운 조건 아래에서는 전투적인 인간이 자기 자신을 공격한다.",
-    "original": "Under peaceful conditions the militant man attacks himself.",
+    "quote": "평화로운 조건 아래에서는 전투적인 인간이 자기 자신을 공격한다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 76",
+    "original": "Under peaceful conditions the militant man attacks himself.",
     "tags": [
       "평화",
       "투쟁",
@@ -196,10 +211,11 @@
   },
   {
     "id": "n016",
-    "text": "자기 자신을 경멸하는 자도, 경멸하는 자로서의 자신은 여전히 존중하고 있다.",
-    "original": "He who despises himself, does still esteem himself as a despiser.",
+    "quote": "자기 자신을 경멸하는 자도, 경멸하는 자로서의 자신은 여전히 존중하고 있다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 78",
+    "original": "He who despises himself, does still esteem himself as a despiser.",
     "tags": [
       "자기인식",
       "경멸",
@@ -209,10 +225,11 @@
   },
   {
     "id": "n017",
-    "text": "바다에서 갈증으로 죽는 일은 끔찍하다. 너의 진실은 더 이상 갈증을 풀지 못할 정도로 짜야만 하는가?",
-    "original": "It is terrible to die of thirst at sea. Is it necessary that you should so salt your truth that it will no longer—quench the thirst?",
+    "quote": "바다에서 갈증으로 죽는 일은 끔찍하다. 너의 진실은 더 이상 갈증을 풀지 못할 정도로 짜야만 하는가?",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 81",
+    "original": "It is terrible to die of thirst at sea. Is it necessary that you should so salt your truth that it will no longer—quench the thirst?",
     "tags": [
       "진실",
       "갈증",
@@ -222,10 +239,11 @@
   },
   {
     "id": "n018",
-    "text": "매우 영리한 사람이 난처해질 때, 우리는 그를 의심하기 시작한다.",
-    "original": "One begins to distrust very clever persons when they become embarrassed.",
+    "quote": "매우 영리한 사람이 난처해질 때, 우리는 그를 의심하기 시작한다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 88",
+    "original": "One begins to distrust very clever persons when they become embarrassed.",
     "tags": [
       "영리함",
       "의심",
@@ -235,10 +253,11 @@
   },
   {
     "id": "n019",
-    "text": "끔찍한 경험은, 그것을 겪는 자 또한 끔찍한 존재가 아닌가 하는 질문을 불러일으킨다.",
-    "original": "Dreadful experiences raise the question whether he who experiences them is not something dreadful also.",
+    "quote": "끔찍한 경험은, 그것을 겪는 자 또한 끔찍한 존재가 아닌가 하는 질문을 불러일으킨다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 89",
+    "original": "Dreadful experiences raise the question whether he who experiences them is not something dreadful also.",
     "tags": [
       "경험",
       "공포",
@@ -248,10 +267,11 @@
   },
   {
     "id": "n020",
-    "text": "인간의 성숙이란, 어린 시절 놀이 속에서 가졌던 진지함을 다시 획득하는 것이다.",
-    "original": "The maturity of man—that means, to have reacquired the seriousness that one had as a child at play.",
+    "quote": "인간의 성숙이란, 어린 시절 놀이 속에서 가졌던 진지함을 다시 획득하는 것이다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 94",
+    "original": "The maturity of man—that means, to have reacquired the seriousness that one had as a child at play.",
     "tags": [
       "성숙",
       "놀이",
@@ -261,10 +281,11 @@
   },
   {
     "id": "n021",
-    "text": "삶과 헤어질 때는, 율리시스가 나우시카와 헤어졌듯 사랑에 사로잡히기보다 축복하면서 떠나야 한다.",
-    "original": "One should part from life as Ulysses parted from Nausicaa—blessing it more than in love with it.",
+    "quote": "삶과 헤어질 때는, 율리시스가 나우시카와 헤어졌듯 사랑에 사로잡히기보다 축복하면서 떠나야 한다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 96",
+    "original": "One should part from life as Ulysses parted from Nausicaa—blessing it more than in love with it.",
     "tags": [
       "삶",
       "이별",
@@ -274,10 +295,11 @@
   },
   {
     "id": "n022",
-    "text": "우리 모두는 실제의 우리보다 스스로를 더 단순한 존재로 가장한다. 그렇게 함으로써 타인 앞에서 스스로를 느슨하게 만든다.",
-    "original": "We all feign to ourselves that we are simpler than we are: we thereby relax ourselves away from our fellows.",
+    "quote": "우리 모두는 실제의 우리보다 스스로를 더 단순한 존재로 가장한다. 그렇게 함으로써 타인 앞에서 스스로를 느슨하게 만든다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 100",
+    "original": "We all feign to ourselves that we are simpler than we are: we thereby relax ourselves away from our fellows.",
     "tags": [
       "가면",
       "자기이해",
@@ -287,10 +309,11 @@
   },
   {
     "id": "n023",
-    "text": "행복 속에 도사린 위험은 이렇다. 이제는 모든 것이 잘 풀린다, 이제 나는 모든 운명을 사랑한다. 누가 나의 운명이 되고 싶어 할까?",
-    "original": "THE DANGER IN HAPPINESS.—\"Everything now turns out best for me, I now love every fate:—who would like to be my fate?\"",
+    "quote": "행복 속에 도사린 위험은 이렇다. 이제는 모든 것이 잘 풀린다, 이제 나는 모든 운명을 사랑한다. 누가 나의 운명이 되고 싶어 할까?",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 103",
+    "original": "THE DANGER IN HAPPINESS.—\"Everything now turns out best for me, I now love every fate:—who would like to be my fate?\"",
     "tags": [
       "행복",
       "운명",
@@ -300,10 +323,11 @@
   },
   {
     "id": "n024",
-    "text": "음악을 통해 정념들은 스스로를 즐긴다.",
-    "original": "By means of music the very passions enjoy themselves.",
+    "quote": "음악을 통해 정념들은 스스로를 즐긴다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 106",
+    "original": "By means of music the very passions enjoy themselves.",
     "tags": [
       "음악",
       "정념",
@@ -313,10 +337,11 @@
   },
   {
     "id": "n025",
-    "text": "한 번 결심이 내려졌다면, 가장 좋은 반대 논거들에도 귀를 닫을 수 있는 것, 그것이 강한 성격의 징표다. 때로는 어리석을 의지까지도 포함해서.",
-    "original": "A sign of strong character, when once the resolution has been taken, to shut the ear even to the best counter-arguments. Occasionally, therefore, a will to stupidity.",
+    "quote": "한 번 결심이 내려졌다면, 가장 좋은 반대 논거들에도 귀를 닫을 수 있는 것, 그것이 강한 성격의 징표다. 때로는 어리석을 의지까지도 포함해서.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 107",
+    "original": "A sign of strong character, when once the resolution has been taken, to shut the ear even to the best counter-arguments. Occasionally, therefore, a will to stupidity.",
     "tags": [
       "성격",
       "결심",
@@ -326,10 +351,11 @@
   },
   {
     "id": "n026",
-    "text": "도덕적 현상이라는 것은 없다. 다만 현상에 대한 도덕적 해석이 있을 뿐이다.",
-    "original": "There is no such thing as moral phenomena, but only a moral interpretation of phenomena.",
+    "quote": "도덕적 현상이라는 것은 없다. 다만 현상에 대한 도덕적 해석이 있을 뿐이다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 108",
+    "original": "There is no such thing as moral phenomena, but only a moral interpretation of phenomena.",
     "tags": [
       "도덕",
       "해석",
@@ -339,10 +365,11 @@
   },
   {
     "id": "n027",
-    "text": "우리 삶의 위대한 시대는, 우리 안의 나쁨을 최고의 것으로 다시 이름 붙일 용기를 얻는 바로 그 지점들에 있다.",
-    "original": "The great epochs of our life are at the points when we gain courage to rebaptize our badness as the best in us.",
+    "quote": "우리 삶의 위대한 시대는, 우리 안의 나쁨을 최고의 것으로 다시 이름 붙일 용기를 얻는 바로 그 지점들에 있다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 116",
+    "original": "The great epochs of our life are at the points when we gain courage to rebaptize our badness as the best in us.",
     "tags": [
       "용기",
       "해석",
@@ -352,10 +379,11 @@
   },
   {
     "id": "n028",
-    "text": "감탄의 순진함이라는 것이 있다. 언젠가 자신 또한 누군가의 감탄 대상이 될 수 있다는 생각이 아직 떠오르지 않은 자에게 그것이 있다.",
-    "original": "There is an innocence of admiration: it is possessed by him to whom it has not yet occurred that he himself may be admired some day.",
+    "quote": "감탄의 순진함이라는 것이 있다. 언젠가 자신 또한 누군가의 감탄 대상이 될 수 있다는 생각이 아직 떠오르지 않은 자에게 그것이 있다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 118",
+    "original": "There is an innocence of admiration: it is possessed by him to whom it has not yet occurred that he himself may be admired some day.",
     "tags": [
       "감탄",
       "순진함",
@@ -365,10 +393,11 @@
   },
   {
     "id": "n029",
-    "text": "찬사를 기뻐하는 것은 많은 경우 단지 마음의 예의일 뿐이며, 정신의 허영과는 정반대다.",
-    "original": "To rejoice on account of praise is in many cases merely politeness of heart—and the very opposite of vanity of spirit.",
+    "quote": "찬사를 기뻐하는 것은 많은 경우 단지 마음의 예의일 뿐이며, 정신의 허영과는 정반대다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 122",
+    "original": "To rejoice on account of praise is in many cases merely politeness of heart—and the very opposite of vanity of spirit.",
     "tags": [
       "찬사",
       "허영",
@@ -378,10 +407,11 @@
   },
   {
     "id": "n030",
-    "text": "누군가에 대한 의견을 바꿔야 할 때, 우리는 그가 우리에게 끼친 불편을 그의 몫으로 무겁게 적어 넣는다.",
-    "original": "When we have to change an opinion about any one, we charge heavily to his account the inconvenience he thereby causes us.",
+    "quote": "누군가에 대한 의견을 바꿔야 할 때, 우리는 그가 우리에게 끼친 불편을 그의 몫으로 무겁게 적어 넣는다.",
+    "author_name": "Friedrich Nietzsche",
     "source": "Beyond Good and Evil",
     "section": "Chapter IV, Aphorism 125",
+    "original": "When we have to change an opinion about any one, we charge heavily to his account the inconvenience he thereby causes us.",
     "tags": [
       "판단",
       "의견",
