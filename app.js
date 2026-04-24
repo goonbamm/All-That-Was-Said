@@ -25,25 +25,54 @@ const AUTO_ADVANCE_PAUSE_MS = 20000;
 let statusTimeoutId = null;
 let autoAdvanceTimeoutId = null;
 let autoAdvanceResumeTimeoutId = null;
-
 function normalizeText(value) {
   return value.trim().toLowerCase();
 }
 
+function getSubjectLabel(quote) {
+  const name = quote.subject_name || quote.author_name;
+  if (!name) {
+    return "";
+  }
+  return name;
+}
+
+function getComparablePersonName(quote) {
+  return quote.subject_name || quote.author_name || "";
+}
+
 function buildMeta(quote) {
-  const details = [quote.author_name, quote.source];
+  const details = [getSubjectLabel(quote), quote.source];
   if (quote.section) {
     details.push(quote.section);
+  }
+  if (quote.context) {
+    details.push(quote.context);
+  }
+  if (quote.recorded_on) {
+    details.push(quote.recorded_on);
   }
   return details.join(" · ");
 }
 
 function buildSourceLine(quote) {
-  return buildMeta(quote);
+  const details = [quote.source];
+  if (quote.section) {
+    details.push(quote.section);
+  }
+  if (quote.context) {
+    details.push(quote.context);
+  }
+  if (quote.recorded_on) {
+    details.push(quote.recorded_on);
+  }
+
+  return details.filter(Boolean).join(" · ");
 }
 
-function buildAuthorLine(author) {
-  return `— ${author}`;
+function buildAuthorLine(quote) {
+  const subject = getSubjectLabel(quote);
+  return subject ? `— ${subject}` : "";
 }
 
 function applyQuoteClamp(quoteText, toggleButton) {
@@ -101,8 +130,13 @@ function filterQuotes() {
       [
         quote.quote,
         quote.author_name,
+        quote.subject_name || "",
+        quote.subject_relation || "",
         quote.source,
         quote.section || "",
+        quote.context || "",
+        quote.recorded_on || "",
+        quote.entry_type || "",
         quote.tags.join(" "),
       ].join(" ")
     );
@@ -114,7 +148,7 @@ function filterQuotes() {
 function renderHero(quote) {
   if (!quote) {
     heroQuote.textContent = "문장을 추가하면 이곳에 오늘의 문장이 나타납니다.";
-    heroSource.textContent = "출처 정보가 여기에 표시됩니다.";
+    heroSource.textContent = "기록 정보가 여기에 표시됩니다.";
     return;
   }
 
@@ -202,11 +236,11 @@ function tokenizeQuoteText(text) {
 }
 
 function buildRelationLabel(target, candidate, sharedTags) {
-  if (target.author_name === candidate.author_name) {
-    return "같은 저자";
+  if (getComparablePersonName(target) === getComparablePersonName(candidate)) {
+    return "같은 사람";
   }
   if (target.source === candidate.source) {
-    return "같은 책";
+    return "같은 출처";
   }
   if (sharedTags.length > 0) {
     return `태그 ${sharedTags[0]}`;
@@ -230,7 +264,7 @@ function getRelatedQuotes(target, quotes, limit) {
 
       let score = sharedTags.length * 5;
 
-      if (quote.author_name === target.author_name) {
+      if (getComparablePersonName(quote) === getComparablePersonName(target)) {
         score += 6;
       }
       if (quote.source === target.source) {
@@ -355,7 +389,7 @@ function renderDesktopMap(target, relatedQuotes) {
   heading.innerHTML = `
     <p class="constellation-eyebrow">Sentence Atlas</p>
     <h2 class="constellation-title">문장 항해도</h2>
-    <p class="constellation-copy">지금 선택한 문장을 중심으로, 같은 저자와 태그, 같은 책에서 이어지는 문장만 궤도로 묶었습니다.</p>
+    <p class="constellation-copy">지금 선택한 문장을 중심으로, 같은 사람과 태그, 같은 출처에서 이어지는 기록만 궤도로 묶었습니다.</p>
   `;
   shell.appendChild(heading);
 
@@ -393,7 +427,7 @@ function renderMobileMap(target, relatedQuotes) {
   heading.innerHTML = `
     <p class="constellation-eyebrow">Sentence Atlas</p>
     <h2 class="constellation-title">문장 항해도</h2>
-    <p class="constellation-copy">모바일에서는 중심 문장에서 이어지는 문장만 아래로 따라가며 읽도록 단순하게 정리했습니다.</p>
+    <p class="constellation-copy">모바일에서는 중심 기록에서 이어지는 문장만 아래로 따라가며 읽도록 단순하게 정리했습니다.</p>
   `;
   shell.appendChild(heading);
 
@@ -484,8 +518,8 @@ function renderList(quotes) {
 
     quoteIndex.textContent = `No. ${String(index + 1).padStart(2, "0")}`;
     quoteText.textContent = quote.quote;
-    quoteAuthor.textContent = buildAuthorLine(quote.author_name);
-    quoteSource.textContent = quote.source;
+    quoteAuthor.textContent = buildAuthorLine(quote);
+    quoteSource.textContent = buildSourceLine(quote);
 
     expandToggle.setAttribute("aria-label", "문장 전체 보기");
     expandToggle.addEventListener("click", () => {
@@ -599,7 +633,7 @@ function bindEvents() {
     const randomIndex = Math.floor(Math.random() * visibleQuotes.length);
     const randomQuote = visibleQuotes[randomIndex];
     setActiveQuote(randomQuote, { scrollToCard: true });
-    setStatus("추천 문장을 보여드렸어요.");
+    setStatus("추천 기록을 보여드렸습니다.");
   });
 
   mobileQuery.addEventListener("change", () => {
@@ -654,7 +688,7 @@ async function init() {
   } catch (error) {
     console.error(error);
     quoteGrid.innerHTML =
-      '<div class="empty-state">명언 데이터를 불러오지 못했습니다. <code>data/quotes.json</code> 형식을 확인해 주세요.</div>';
+      '<div class="empty-state">문장 데이터를 불러오지 못했습니다. <code>data/quotes.json</code> 형식을 확인해 주세요.</div>';
   }
 }
 

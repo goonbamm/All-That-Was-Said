@@ -7,6 +7,16 @@ from pathlib import Path
 
 DATA_FILE = Path(__file__).resolve().parent.parent / "data" / "quotes.json"
 REQUIRED_KEYS = {"id", "quote", "author_name", "source", "tags"}
+OPTIONAL_STRING_KEYS = {
+    "section",
+    "original",
+    "entry_type",
+    "subject_name",
+    "subject_relation",
+    "context",
+    "recorded_on",
+}
+ENTRY_TYPES = {"quote", "motto", "shared"}
 
 
 def main() -> int:
@@ -48,6 +58,17 @@ def main() -> int:
             if not isinstance(value, str) or not value.strip():
                 print(f"Validation failed: item {index} has an invalid '{key}'.")
                 return 1
+
+        for key in OPTIONAL_STRING_KEYS:
+            if key in quote and quote[key] is not None and not isinstance(quote[key], str):
+                print(f"Validation failed: item {index} has an invalid '{key}'.")
+                return 1
+
+        entry_type = quote.get("entry_type")
+        if entry_type and entry_type not in ENTRY_TYPES:
+            joined = ", ".join(sorted(ENTRY_TYPES))
+            print(f"Validation failed: item {index} has unsupported entry_type '{entry_type}'. Expected one of: {joined}.")
+            return 1
 
         tags = quote["tags"]
         if not isinstance(tags, list) or not tags:
