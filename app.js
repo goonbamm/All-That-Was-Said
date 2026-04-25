@@ -470,6 +470,7 @@ function renderMobileMap(target, relatedQuotes) {
     <h2 class="constellation-title">문장 항해도</h2>
   `;
   shell.appendChild(heading);
+  shell.appendChild(createMapAtmosphere());
 
   const trail = document.createElement("div");
   trail.className = "constellation-trail";
@@ -490,6 +491,8 @@ function renderMobileMap(target, relatedQuotes) {
 
     const branch = createMapCard(item.quote, {
       variant: "branch",
+      relation: item.relation,
+      showRelation: true,
       relationKind: item.relationKind,
       isActive: state.activeQuoteId === item.quote.id,
       showMeta: false,
