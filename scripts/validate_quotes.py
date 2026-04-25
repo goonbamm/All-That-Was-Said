@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -17,6 +18,7 @@ OPTIONAL_STRING_KEYS = {
     "recorded_on",
 }
 ENTRY_TYPES = {"quote", "motto", "shared"}
+RECORDED_ON_PATTERN = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def main() -> int:
@@ -68,6 +70,11 @@ def main() -> int:
         if entry_type and entry_type not in ENTRY_TYPES:
             joined = ", ".join(sorted(ENTRY_TYPES))
             print(f"Validation failed: item {index} has unsupported entry_type '{entry_type}'. Expected one of: {joined}.")
+            return 1
+
+        recorded_on = quote.get("recorded_on")
+        if recorded_on and not RECORDED_ON_PATTERN.fullmatch(recorded_on):
+            print(f"Validation failed: item {index} has invalid recorded_on '{recorded_on}'. Expected YYYY-MM-DD.")
             return 1
 
         tags = quote["tags"]

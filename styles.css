@@ -8,6 +8,10 @@
   --accent: #b65b36;
   --accent-soft: #ecd4ab;
   --accent-deep: #2d1f18;
+  --tea-paper: #fffaf0;
+  --tea-paper-deep: #f2dfc0;
+  --tea-line: rgba(105, 72, 43, 0.2);
+  --tea-stain: rgba(159, 94, 44, 0.18);
   --shadow: 0 28px 90px rgba(53, 33, 20, 0.14);
   --shadow-deep: 0 38px 100px rgba(26, 18, 13, 0.24);
   --radius-xl: 38px;
@@ -168,6 +172,7 @@ h2,
 .quote-text {
   margin: 0;
   font-family: "Noto Serif KR", serif;
+  overflow-wrap: anywhere;
   word-break: keep-all;
 }
 
@@ -190,6 +195,7 @@ h1 {
 .hero-copy-block {
   position: relative;
   z-index: 1;
+  min-width: 0;
   max-width: 740px;
 }
 
@@ -221,18 +227,68 @@ h1 {
   --pointer-y: 50%;
   position: relative;
   z-index: 1;
-  padding: 30px 30px 28px;
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 34px;
+  min-width: 0;
+  overflow: visible;
+  padding: 72px 32px 34px;
+  border: 1px solid var(--tea-line);
+  border-radius: 8px 8px 30px 30px;
   background:
-    radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 255, 255, 0.4), transparent 48%),
-    linear-gradient(165deg, rgba(255, 255, 255, 0.5), rgba(255, 249, 239, 0.2)),
-    rgba(255, 251, 246, 0.3);
+    radial-gradient(circle at var(--pointer-x) var(--pointer-y), rgba(255, 255, 255, 0.52), transparent 44%),
+    linear-gradient(155deg, rgba(255, 253, 248, 0.94), rgba(245, 225, 191, 0.78)),
+    var(--tea-paper);
   color: #1e1612;
   transform: translateY(24px);
   transform-style: preserve-3d;
-  box-shadow: var(--shadow-deep);
-  backdrop-filter: blur(24px) saturate(132%);
+  box-shadow:
+    0 34px 80px rgba(72, 47, 27, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.46);
+  backdrop-filter: blur(18px) saturate(118%);
+}
+
+.hero-card::before {
+  position: absolute;
+  top: 13px;
+  left: 50%;
+  width: 15px;
+  height: 15px;
+  border: 1px solid rgba(88, 58, 34, 0.28);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(83, 54, 32, 0.14) 0 34%, rgba(255, 250, 240, 0.92) 36% 100%);
+  box-shadow: 0 56px 120px 24px rgba(160, 94, 42, 0.14);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.hero-tea-tag {
+  position: absolute;
+  top: -38px;
+  right: 26px;
+  z-index: 4;
+  min-width: 66px;
+  padding: 9px 11px;
+  border: 1px solid rgba(105, 72, 43, 0.24);
+  border-radius: 5px;
+  background: linear-gradient(160deg, #fff9ed, #ecd4a8);
+  box-shadow: 0 14px 28px rgba(73, 48, 29, 0.14);
+  color: rgba(45, 31, 24, 0.68);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-align: center;
+  transform: rotate(5deg);
+  transform-origin: 50% -52px;
+}
+
+.hero-tea-tag::before {
+  position: absolute;
+  right: 44%;
+  bottom: 100%;
+  width: 1px;
+  height: 76px;
+  background: rgba(86, 58, 34, 0.38);
+  content: "";
+  transform: rotate(-23deg);
+  transform-origin: bottom;
 }
 
 .hero-quote {
@@ -271,7 +327,13 @@ h1 {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  border: 1px solid rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  background:
+    linear-gradient(150deg, transparent 0 45%, rgba(128, 89, 55, 0.1) 46%, transparent 49%) top left / 52% 58px no-repeat,
+    linear-gradient(30deg, transparent 0 45%, rgba(128, 89, 55, 0.1) 46%, transparent 49%) top right / 52% 58px no-repeat,
+    radial-gradient(circle at 18% 78%, rgba(112, 70, 39, 0.055) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 36%, rgba(112, 70, 39, 0.05) 0 1px, transparent 1.5px),
+    radial-gradient(ellipse at 50% 110%, rgba(154, 91, 44, 0.14), transparent 58%);
   pointer-events: none;
   content: "";
 }
@@ -439,6 +501,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
+  margin-top: 38px;
   align-items: stretch;
 }
 
@@ -1570,17 +1633,151 @@ h1 {
   }
 }
 
+@keyframes tea-bag-jolt {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  22% {
+    transform: translateY(-5px) rotate(-0.7deg);
+  }
+  48% {
+    transform: translateY(2px) rotate(0.35deg);
+  }
+  68% {
+    transform: translateY(-1px) rotate(-0.15deg);
+  }
+}
+
+@keyframes tea-tag-yank {
+  0%,
+  100% {
+    transform: rotate(var(--tag-angle)) translate(0, 0);
+  }
+  28% {
+    transform: rotate(11deg) translate(18px, -10px);
+  }
+  52% {
+    transform: rotate(-5deg) translate(-4px, 3px);
+  }
+  72% {
+    transform: rotate(3deg) translate(2px, -1px);
+  }
+}
+
+@keyframes tea-string-snap {
+  0%,
+  100% {
+    opacity: 1;
+    transform: rotate(-13deg) scaleX(1);
+  }
+  30% {
+    opacity: 0.92;
+    transform: rotate(-18deg) scaleX(1.14);
+  }
+  54% {
+    transform: rotate(-10deg) scaleX(0.95);
+  }
+}
+
+@keyframes tea-paper-open {
+  0%,
+  100% {
+    clip-path: polygon(0 12%, 16% 0, 84% 0, 100% 12%, 100% 100%, 0 100%);
+  }
+  34% {
+    clip-path: polygon(0 12%, 15% 0.5%, 84% 0, 100% 12%, 100% 100%, 0 100%);
+  }
+  62% {
+    clip-path: polygon(0 12%, 16% 0, 83% 0.5%, 100% 12%, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes tea-seal-tear {
+  0%,
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  34% {
+    opacity: 0.62;
+    transform: translateY(-4px);
+  }
+  58% {
+    opacity: 0.84;
+    transform: translateY(1px);
+  }
+}
+
+@keyframes tea-tear-rip {
+  0% {
+    opacity: 0;
+    clip-path: inset(0 50% 0 50%);
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+  }
+  42% {
+    clip-path: inset(0 18% 0 18%);
+    transform: translateY(-1px);
+  }
+  68% {
+    opacity: 0.82;
+    clip-path: inset(0 2% 0 2%);
+    transform: translateY(1px);
+  }
+  100% {
+    opacity: 0;
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes tea-crease-split {
+  0%,
+  100% {
+    opacity: 1;
+    filter: none;
+  }
+  34% {
+    opacity: 0.72;
+    filter: drop-shadow(0 7px 4px rgba(72, 46, 24, 0.16));
+  }
+}
+
+@keyframes tea-leaves-stir {
+  0%,
+  100% {
+    opacity: 0.72;
+    transform: translateY(0);
+  }
+  38% {
+    opacity: 0.96;
+    transform: translateY(-6px);
+  }
+  64% {
+    opacity: 0.8;
+    transform: translateY(2px);
+  }
+}
+
 .quote-card {
+  --tag-angle: -2deg;
+  --string-angle: -13deg;
+  --leaf-opacity: 0.72;
+  --paper-warmth: 0.08;
+  --seal-opacity: 0.13;
+  position: relative;
+  overflow: visible;
   display: flex;
   flex-direction: column;
-  min-height: 450px;
-  padding: 26px 24px 24px;
-  border: 1px solid var(--line);
-  border-radius: 32px;
-  background:
-    linear-gradient(180deg, rgba(255, 252, 247, 0.94), rgba(255, 247, 237, 0.72)),
-    rgba(255, 255, 255, 0.46);
-  box-shadow: 0 22px 55px rgba(53, 37, 26, 0.08);
+  min-height: 520px;
+  padding: 150px 28px 28px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
   transition:
     transform 180ms ease,
     box-shadow 180ms ease,
@@ -1588,9 +1785,178 @@ h1 {
   cursor: pointer;
 }
 
+.tea-bag-shape {
+  position: absolute;
+  inset: 70px 0 0;
+  z-index: 0;
+  border: 1px solid rgba(105, 72, 43, 0.19);
+  border-radius: 3px 3px 24px 24px;
+  background:
+    radial-gradient(circle at 24% 28%, rgba(255, 255, 255, 0.68), transparent 34%),
+    radial-gradient(ellipse at 58% 112%, rgba(168, 101, 46, var(--paper-warmth)), transparent 56%),
+    linear-gradient(145deg, rgba(255, 253, 247, 0.9), rgba(245, 224, 190, 0.72)),
+    var(--tea-paper);
+  box-shadow:
+    0 24px 54px rgba(53, 37, 26, 0.11),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.48),
+    inset 0 -52px 80px rgba(168, 101, 46, 0.08);
+  clip-path: polygon(0 12%, 16% 0, 84% 0, 100% 12%, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.quote-card::before {
+  position: absolute;
+  top: 88px;
+  left: 50%;
+  z-index: 3;
+  width: 13px;
+  height: 13px;
+  border: 1px solid rgba(88, 58, 34, 0.28);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(83, 54, 32, 0.16) 0 34%, rgba(255, 250, 240, 0.92) 36% 100%);
+  content: "";
+  transform: translateX(-50%);
+}
+
+.quote-card::after {
+  position: absolute;
+  inset: 70px 0 0;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(148deg, transparent 0 47%, rgba(108, 73, 42, 0.14) 48%, transparent 51%) top left / 51% 72px no-repeat,
+    linear-gradient(32deg, transparent 0 47%, rgba(108, 73, 42, 0.14) 48%, transparent 51%) top right / 51% 72px no-repeat,
+    radial-gradient(ellipse at 50% 112%, var(--tea-stain), transparent 58%);
+  pointer-events: none;
+  content: "";
+}
+
+.tea-filter-texture {
+  position: absolute;
+  inset: 70px 0 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 17% 24%, rgba(95, 65, 39, 0.055) 0 0.9px, transparent 1.4px),
+    radial-gradient(circle at 61% 38%, rgba(95, 65, 39, 0.045) 0 0.8px, transparent 1.3px),
+    radial-gradient(circle at 82% 66%, rgba(95, 65, 39, 0.05) 0 0.9px, transparent 1.4px),
+    repeating-linear-gradient(108deg, rgba(96, 66, 40, 0.03) 0 1px, transparent 1px 9px);
+  clip-path: polygon(0 12%, 16% 0, 84% 0, 100% 12%, 100% 100%, 0 100%);
+  mix-blend-mode: multiply;
+  opacity: 0.78;
+  pointer-events: none;
+}
+
+.tea-edge-seal {
+  position: absolute;
+  inset: 82px 12px 10px;
+  z-index: 1;
+  border-right: 1px solid rgba(106, 72, 42, 0.075);
+  border-bottom: 1px solid rgba(106, 72, 42, 0.09);
+  border-left: 1px solid rgba(106, 72, 42, 0.075);
+  border-radius: 0 0 18px 18px;
+  background:
+    linear-gradient(to bottom, transparent 0 44px, rgba(116, 80, 48, 0.075) 45px, transparent 46px),
+    repeating-linear-gradient(90deg, rgba(102, 70, 41, var(--seal-opacity)) 0 1px, transparent 1px 10px) top 44px left 0 / 100% 6px no-repeat;
+  clip-path: polygon(0 10%, 15% 0, 85% 0, 100% 10%, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.tea-tear-line {
+  position: absolute;
+  top: 128px;
+  right: 28px;
+  left: 28px;
+  z-index: 3;
+  height: 10px;
+  background:
+    linear-gradient(90deg, transparent 0 2%, rgba(109, 72, 38, 0.24) 2% 5%, transparent 5% 8%, rgba(109, 72, 38, 0.2) 8% 13%, transparent 13% 17%, rgba(109, 72, 38, 0.28) 17% 23%, transparent 23% 28%, rgba(109, 72, 38, 0.2) 28% 32%, transparent 32% 38%, rgba(109, 72, 38, 0.28) 38% 44%, transparent 44% 49%, rgba(109, 72, 38, 0.22) 49% 53%, transparent 53% 61%, rgba(109, 72, 38, 0.26) 61% 67%, transparent 67% 74%, rgba(109, 72, 38, 0.22) 74% 81%, transparent 81% 87%, rgba(109, 72, 38, 0.28) 87% 94%, transparent 94% 100%);
+  filter: drop-shadow(0 3px 2px rgba(88, 54, 25, 0.14));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tea-string {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+  z-index: 2;
+  width: calc(50% - 72px);
+  min-width: 70px;
+  height: 1px;
+  background: rgba(86, 58, 34, 0.36);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.46);
+  transform: rotate(var(--string-angle));
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.tea-leaves {
+  position: absolute;
+  right: 20px;
+  bottom: 18px;
+  left: 20px;
+  z-index: 0;
+  height: 84px;
+  border-radius: 0 0 22px 22px;
+  background:
+    radial-gradient(circle at 17% 78%, rgba(94, 62, 32, 0.2) 0 1.4px, transparent 1.8px),
+    radial-gradient(circle at 28% 68%, rgba(94, 62, 32, 0.16) 0 1.2px, transparent 1.7px),
+    radial-gradient(circle at 55% 82%, rgba(94, 62, 32, 0.16) 0 1.3px, transparent 1.8px),
+    radial-gradient(circle at 76% 66%, rgba(94, 62, 32, 0.13) 0 1.2px, transparent 1.7px),
+    radial-gradient(ellipse at 50% 100%, rgba(156, 91, 37, 0.12), transparent 64%);
+  filter: blur(0.1px);
+  opacity: var(--leaf-opacity);
+  pointer-events: none;
+}
+
+.quote-card[data-tea-variant="light"] {
+  --seal-opacity: 0.08;
+}
+
+.quote-card[data-tea-variant="light"] .tea-bag-shape {
+  border-color: rgba(105, 72, 43, 0.14);
+  background:
+    radial-gradient(circle at 30% 24%, rgba(255, 255, 255, 0.78), transparent 36%),
+    radial-gradient(ellipse at 58% 112%, rgba(168, 101, 46, var(--paper-warmth)), transparent 58%),
+    linear-gradient(145deg, rgba(255, 254, 250, 0.94), rgba(247, 232, 204, 0.66)),
+    var(--tea-paper);
+}
+
+.quote-card[data-tea-variant="steeped"] .tea-bag-shape {
+  background:
+    radial-gradient(circle at 20% 22%, rgba(255, 255, 255, 0.58), transparent 32%),
+    radial-gradient(ellipse at 54% 110%, rgba(145, 78, 30, var(--paper-warmth)), transparent 58%),
+    linear-gradient(145deg, rgba(255, 250, 239, 0.9), rgba(235, 207, 164, 0.78)),
+    var(--tea-paper);
+}
+
+.quote-card[data-tea-variant="soft"] .tea-bag-shape {
+  border-radius: 6px 6px 30px 30px;
+  clip-path: polygon(0 11%, 14% 0, 86% 0, 100% 11%, 100% 100%, 0 100%);
+}
+
+.quote-card[data-tea-variant="pressed"] {
+  --seal-opacity: 0.18;
+}
+
+.quote-card[data-tea-variant="pressed"] .tea-edge-seal {
+  right: 10px;
+  left: 10px;
+}
+
+.quote-card[data-tea-variant="pressed"] .tea-bag-shape {
+  clip-path: polygon(0 13%, 18% 0, 82% 0, 100% 13%, 100% 100%, 0 100%);
+}
+
 .quote-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 28px 60px rgba(53, 37, 26, 0.16);
+  transform: translateY(-6px) rotate(-0.35deg);
+}
+
+.quote-card:hover .tea-bag-shape {
+  box-shadow:
+    0 30px 64px rgba(53, 37, 26, 0.17),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.52);
 }
 
 .quote-grid.has-active .quote-card {
@@ -1603,9 +1969,13 @@ h1 {
 .quote-grid.has-active .quote-card.is-active {
   opacity: 1;
   filter: saturate(100%);
-  border-color: rgba(182, 91, 54, 0.62);
-  transform: translateY(-8px);
+  transform: translateY(-8px) rotate(0.4deg);
   animation: card-focus-glow 2.6s ease-in-out infinite;
+}
+
+.quote-card.is-active .tea-bag-shape,
+.quote-grid.has-active .quote-card.is-active .tea-bag-shape {
+  border-color: rgba(182, 91, 54, 0.62);
 }
 
 .quote-card:focus-visible {
@@ -1614,6 +1984,8 @@ h1 {
 }
 
 .quote-card-top {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1629,14 +2001,73 @@ h1 {
 }
 
 .copy-button {
-  padding: 9px 12px;
-  border: 1px solid rgba(23, 20, 16, 0.14);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.38);
+  position: absolute;
+  top: 2px;
+  right: 24px;
+  z-index: 4;
+  min-width: 64px;
+  padding: 9px 10px;
+  border: 1px solid rgba(105, 72, 43, 0.22);
+  border-radius: 5px;
+  background:
+    linear-gradient(160deg, rgba(255, 251, 244, 0.98), rgba(236, 211, 172, 0.92));
+  box-shadow: 0 10px 20px rgba(73, 48, 29, 0.1);
+  color: rgba(45, 31, 24, 0.78);
   font: inherit;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transform: rotate(var(--tag-angle));
+  transform-origin: 50% -28px;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.copy-button::before {
+  display: none;
+}
+
+.copy-button:hover {
+  box-shadow: 0 14px 26px rgba(73, 48, 29, 0.16);
+  transform: rotate(2deg) translateY(-1px);
+}
+
+.quote-card.is-tearing {
+  animation: tea-bag-jolt 520ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.quote-card.is-tearing .copy-button {
+  animation: tea-tag-yank 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quote-card.is-tearing .tea-string {
+  animation: tea-string-snap 720ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.quote-card.is-tearing .tea-bag-shape {
+  animation: tea-paper-open 860ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.quote-card.is-tearing .tea-edge-seal {
+  animation: tea-seal-tear 860ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.quote-card.is-tearing .tea-tear-line {
+  animation: tea-tear-rip 860ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.quote-card.is-tearing::after {
+  animation: tea-crease-split 860ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.quote-card.is-tearing .tea-leaves {
+  animation: tea-leaves-stir 860ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .quote-text {
+  position: relative;
+  z-index: 1;
   margin: 26px 0 14px;
   font-size: clamp(1.5rem, 1.9vw, 2.05rem);
   font-weight: 600;
@@ -1653,6 +2084,8 @@ h1 {
 }
 
 .quote-expand-toggle {
+  position: relative;
+  z-index: 1;
   align-self: flex-start;
   margin: -4px 0 0;
   padding: 0;
@@ -1667,6 +2100,8 @@ h1 {
 }
 
 .quote-author {
+  position: relative;
+  z-index: 1;
   margin: 10px 0 0;
   color: rgba(23, 20, 16, 0.72);
   font-size: 0.93rem;
@@ -1674,6 +2109,8 @@ h1 {
 }
 
 .quote-source {
+  position: relative;
+  z-index: 1;
   margin: auto 0 0;
   padding-top: 12px;
   color: rgba(23, 20, 16, 0.54);
@@ -1749,12 +2186,31 @@ h1 {
     line-height: 1.66;
   }
 
+  .hero-copy {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .hero-card,
+  .hero-card[data-depth-card] {
+    width: 100%;
+    max-width: 100%;
+    padding: 56px 24px 30px;
+    clip-path: none;
+    overflow: hidden;
+  }
+
+  .hero-quote {
+    font-size: clamp(1.36rem, 7vw, 1.78rem);
+  }
+
   .quote-grid {
     grid-template-columns: 1fr;
   }
 
   .quote-card {
-    min-height: unset;
+    min-height: 500px;
+    padding-top: 142px;
   }
 
   .quote-text.is-clamped {
@@ -2122,7 +2578,15 @@ h1 {
   }
 
   .quote-card.is-active,
-  .quote-grid.has-active .quote-card.is-active {
+  .quote-grid.has-active .quote-card.is-active,
+  .quote-card.is-tearing,
+  .quote-card.is-tearing .copy-button,
+  .quote-card.is-tearing .tea-string,
+  .quote-card.is-tearing .tea-bag-shape,
+  .quote-card.is-tearing .tea-edge-seal,
+  .quote-card.is-tearing .tea-tear-line,
+  .quote-card.is-tearing .tea-leaves,
+  .quote-card.is-tearing::after {
     animation: none;
   }
 

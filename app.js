@@ -75,6 +75,17 @@ function buildAuthorLine(quote) {
   return subject ? `— ${subject}` : "";
 }
 
+function getTeaBagVariant(index) {
+  const variants = [
+    { variant: "classic", tagAngle: "-3deg", stringAngle: "-13deg", leafOpacity: "0.72", paperWarmth: "0.08" },
+    { variant: "light", tagAngle: "2deg", stringAngle: "-9deg", leafOpacity: "0.58", paperWarmth: "0.04" },
+    { variant: "steeped", tagAngle: "-1deg", stringAngle: "-17deg", leafOpacity: "0.9", paperWarmth: "0.14" },
+    { variant: "soft", tagAngle: "4deg", stringAngle: "-11deg", leafOpacity: "0.64", paperWarmth: "0.06" },
+    { variant: "pressed", tagAngle: "-5deg", stringAngle: "-15deg", leafOpacity: "0.78", paperWarmth: "0.1" },
+  ];
+  return variants[index % variants.length];
+}
+
 function applyQuoteClamp(quoteText, toggleButton) {
   quoteText.classList.remove("is-clamped", "is-expanded");
   toggleButton.hidden = true;
@@ -564,6 +575,12 @@ function renderList(quotes) {
     quoteText.textContent = quote.quote;
     quoteAuthor.textContent = buildAuthorLine(quote);
     quoteSource.textContent = buildSourceLine(quote);
+    const teaVariant = getTeaBagVariant(index);
+    article.dataset.teaVariant = teaVariant.variant;
+    article.style.setProperty("--tag-angle", teaVariant.tagAngle);
+    article.style.setProperty("--string-angle", teaVariant.stringAngle);
+    article.style.setProperty("--leaf-opacity", teaVariant.leafOpacity);
+    article.style.setProperty("--paper-warmth", teaVariant.paperWarmth);
 
     expandToggle.setAttribute("aria-label", "문장 전체 보기");
     expandToggle.addEventListener("click", () => {
@@ -576,10 +593,14 @@ function renderList(quotes) {
 
     copyButton.addEventListener("click", async () => {
       await copyQuote(quote);
-      copyButton.textContent = "복사됨";
+      article.classList.remove("is-tearing");
+      void article.offsetWidth;
+      article.classList.add("is-tearing");
+      copyButton.textContent = "COPIED";
       setStatus("문장을 복사했습니다.");
       window.setTimeout(() => {
-        copyButton.textContent = "복사";
+        copyButton.textContent = "COPY";
+        article.classList.remove("is-tearing");
       }, 1200);
     });
 
