@@ -431,5 +431,50 @@
       "인연",
       "태도"
     ]
+  },
+  {
+    "id": "n034",
+    "quote": "사실 우리의 삶은 과거나 지금이나 똑같다. 수십만 년 동안 인간을 움직인 생리적, 심리적 프로세스가 지금도 여전히 작동 중이다.",
+    "author_name": "Carl Jung",
+    "source": "인용문",
+    "original": "In fact, our lives are the same whether in the past or now; the physiological and psychological processes that have moved humans for hundreds of thousands of years are still at work.",
+    "entry_type": "shared",
+    "subject_name": "Carl Jung",
+    "recorded_on": "2026-05-01",
+    "tags": [
+      "삶",
+      "심리",
+      "반복"
+    ]
+  },
+  {
+    "id": "n035",
+    "quote": "어느 시대건 현자들은 항상 같은 말을 하고, 어리석은 대다수 사람은 하나같이 그 반대로 행동한다.",
+    "author_name": "Arthur Schopenhauer",
+    "source": "인용문",
+    "original": "In every age, the wise have said the same things, and the foolish majority have acted in exactly the opposite way.",
+    "entry_type": "shared",
+    "subject_name": "Arthur Schopenhauer",
+    "recorded_on": "2026-05-01",
+    "tags": [
+      "현자",
+      "대중",
+      "행동"
+    ]
+  },
+  {
+    "id": "n036",
+    "quote": "역사가 반복되는 것이 아니라 인간의 행동이 반복되는 것이다.",
+    "author_name": "Voltaire",
+    "source": "인용문",
+    "original": "It is not history that repeats itself, but human behavior.",
+    "entry_type": "shared",
+    "subject_name": "Voltaire",
+    "recorded_on": "2026-05-01",
+    "tags": [
+      "역사",
+      "행동",
+      "반복"
+    ]
   }
 ]
